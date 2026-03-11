@@ -1,10 +1,10 @@
-import { flattenTokens } from "@/style/build/flattenToToken";
-import { pxToRem } from "@/style/build/pxToRem";
+import { flattenTokens } from "@/assets/build/flattenToToken";
+import { pxToRem } from "@/assets/build/pxToRem";
 import fs from "fs";
 import path from "path";
 
-const TOKEN_PATH = path.resolve('src/style/tokens');
-const OUTPUT_PATH = path.resolve('src/style/scss');
+const TOKEN_PATH = path.resolve('src/assets/tokens');
+const OUTPUT_PATH = path.resolve('src/assets/scss/base');
 
 const files = fs.readdirSync(TOKEN_PATH)
 

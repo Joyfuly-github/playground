@@ -1,6 +1,6 @@
 export function flattenTokens(
 	obj: any,
-	prefix = '--'
+	prefix = '-'
 ) {
 	const result: Record<string, any> = {};
 

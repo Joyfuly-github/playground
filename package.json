@@ -16,7 +16,7 @@
 		"format": "prettier --write --experimental-cli src/",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"build:tokens": "tsx src/style/build/buildTokens.ts"
+		"build:tokens": "tsx src/assets/build/buildTokens.ts"
 	},
 	"dependencies": {
 		"vue": "^3.5.29"
@@ -49,6 +49,7 @@
 		"oxlint": "~1.50.0",
 		"playwright": "^1.58.2",
 		"prettier": "3.8.1",
+		"sass": "^1.98.0",
 		"storybook": "^10.2.15",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.21.0",
