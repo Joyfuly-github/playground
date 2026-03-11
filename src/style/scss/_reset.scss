@@ -1,0 +1,142 @@
+@charset "utf-8";
+@import "./font.css";
+
+/* box sizing */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* document */
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100%;
+	min-height: 100vh;
+	line-height: 1.5;
+	-webkit-text-size-adjust: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* block element */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+/* list */
+ol,
+ul {
+	list-style: none;
+}
+
+/* table */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* media */
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+/* link */
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* form */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: none;
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+/* number input spinner */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	appearance: none;
+}
+
+input[type="number"] {
+	appearance: textfield;
+}
+
+/* textarea */
+textarea {
+	resize: none;
+	overflow-y: auto;
+}
+
+/* quote */
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+	content: "";
+}
+
+/* focus */
+:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* prevent layout shift */
+img {
+	height: auto;
+}
+
+/* typography */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/* root stacking */
+#root,
+#__next,
+#app {
+	isolation: isolate;
+}
