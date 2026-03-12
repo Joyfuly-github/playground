@@ -1,0 +1,143 @@
+/* =========================
+  COLOR
+========================= */
+$color: (
+	black: var(--color-black),
+	white: var(--color-white),
+	primary-100: var(--color-primary-100),
+	primary-500: var(--color-primary-500),
+	primary-900: var(--color-primary-900),
+	secondary-100: var(--color-secondary-100),
+	secondary-500: var(--color-secondary-500),
+	secondary-900: var(--color-secondary-900),
+	success-100: var(--color-success-100),
+	success-500: var(--color-success-500),
+	success-900: var(--color-success-900),
+	info-100: var(--color-info-100),
+	info-500: var(--color-info-500),
+	info-900: var(--color-info-900),
+	warning-100: var(--color-warning-100),
+	warning-500: var(--color-warning-500),
+	warning-900: var(--color-warning-900),
+	danger-100: var(--color-danger-100),
+	danger-500: var(--color-danger-500),
+	danger-900: var(--color-danger-900)
+);
+
+@each $name, $value in $color {
+	.color-#{$name} {
+		color: $value;
+	}
+
+	.bg-#{$name} {
+		background-color: $value;
+	}
+
+	.border-#{$name} {
+		border-color: $value;
+	}
+}
+
+/* =========================
+  line-height
+========================= */
+$lineHeight: tight, base, heading;
+
+@each $lh in $lineHeight {
+	.lh-#{$lh} {
+		line-height: var(--lh-#{$lh});
+	}
+}
+
+/* =========================
+  font-weight
+========================= */
+$fontWeight: (
+	font-thin: var(--font-weight-thin),
+	font-light: var(--font-weight-light),
+	font-normal: var(--font-weight-normal),
+	font-medium: var(--font-weight-medium),
+	font-bold: var(--font-weight-bold)
+);
+
+@each $name, $value in $fontWeight {
+	.#{$name} {
+		font-weight: $value;
+	}
+}
+
+/* =========================
+  font-size
+========================= */
+$fontSize: (
+	font-h1: var(--font-size-h1),
+	font-h2: var(--font-size-h2),
+	font-h3: var(--font-size-h3),
+	font-h4: var(--font-size-h4),
+	font-h5: var(--font-size-h5),
+	font-base: var(--font-size-base),
+	font-small: var(--font-size-small)
+);
+
+@each $name, $value in $fontSize {
+	.#{$name} {
+		font-size: $value;
+	}
+}
+
+/* =========================
+  spacing
+========================= */
+$spacing: 8, 16, 24, 32, 40, 48;
+
+@each $s in $spacing {
+	// margin
+	.m-#{$s} {
+		margin: var(--spacing-#{$s});
+	}
+	.mt-#{$s} {
+		margin-top: var(--spacing-#{$s});
+	}
+	.mr-#{$s} {
+		margin-right: var(--spacing-#{$s});
+	}
+	.mb-#{$s} {
+		margin-bottom: var(--spacing-#{$s});
+	}
+	.ml-#{$s} {
+		margin-left: var(--spacing-#{$s});
+	}
+	.mx-#{$s} {
+		margin-left: var(--spacing-#{$s});
+		margin-right: var(--spacing-#{$s});
+	}
+	.my-#{$s} {
+		margin-top: var(--spacing-#{$s});
+		margin-bottom: var(--spacing-#{$s});
+	}
+
+	// padding
+	.p-#{$s} {
+		padding: var(--spacing-#{$s});
+	}
+	.pt-#{$s} {
+		padding-top: var(--spacing-#{$s});
+	}
+	.pr-#{$s} {
+		padding-right: var(--spacing-#{$s});
+	}
+	.pb-#{$s} {
+		padding-bottom: var(--spacing-#{$s});
+	}
+	.pl-#{$s} {
+		padding-left: var(--spacing-#{$s});
+	}
+	.px-#{$s} {
+		padding-left: var(--spacing-#{$s});
+		padding-right: var(--spacing-#{$s});
+	}
+	.py-#{$s} {
+		padding-top: var(--spacing-#{$s});
+		padding-bottom: var(--spacing-#{$s});
+	}
+}

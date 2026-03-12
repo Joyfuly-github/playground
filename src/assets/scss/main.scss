@@ -1,16 +1,17 @@
-@use './base/_reset';
-@use './base/_color';
-@use './base/_typography';
-@use './base/_desktop';
-@use './base/_mobile';
+@use "./base/_reset";
+@use "./base/_color";
+@use "./base/_typography";
+@use "./base/_desktop";
+@use "./base/_mobile";
+@use "./base/utilities";
+
+html {
+	font-size: 10px;
+}
 
 body {
-	line-height: var(--lineHeight-normal);
+	line-height: var(--lh-base);
 	font-family: var(--font-family);
 	font-size: var(--font-size-base);
 	color: var(--color-black);
-	font-smooth: never;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-rendering: optimizeLegibility;
 }

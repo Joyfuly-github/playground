@@ -1,4 +1,15 @@
 {
+	"lh": {
+		"tight": {
+			"value": "1.3"
+		},
+		"base": {
+			"value": "1.5"
+		},
+		"heading": {
+			"value": "1.7"
+		}
+	},
 	"font": {
 		"family": {
 			"value": "Pretendard, Noto Sans KR, Segoe UI, Apple SD Gothic Neo, Malgun Gothic, Sans-serif"
@@ -10,7 +21,7 @@
 			"light": {
 				"value": "300"
 			},
-			"regular": {
+			"normal": {
 				"value": "400"
 			},
 			"medium": {
@@ -19,17 +30,6 @@
 			"bold": {
 				"value": "700"
 			}
-		}
-	},
-	"lineHeight": {
-		"tight": {
-			"value": "1.3"
-		},
-		"normal": {
-			"value": "1.5"
-		},
-		"relaxed": {
-			"value": "1.7"
 		}
 	}
 }
