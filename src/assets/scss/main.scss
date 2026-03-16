@@ -14,4 +14,46 @@ body {
 	font-family: var(--font-family);
 	font-size: var(--font-size-base);
 	color: var(--color-black);
+	letter-spacing: -0.05rem;
+}
+
+// title
+h1,
+.h1 {
+	margin-bottom: var(--spacing-40);
+	font-size: var(--font-size-h1);
+	font-weight: var(--font-weight-bold);
+}
+
+h2,
+.h2 {
+	margin-bottom: var(--spacing-32);
+	font-size: var(--font-size-h2);
+	font-weight: var(--font-weight-bold);
+}
+
+h3,
+.h3 {
+	margin-bottom: var(--spacing-16);
+	font-size: var(--font-size-h3);
+	font-weight: var(--font-weight-bold);
+}
+
+h4,
+.h4 {
+	margin-bottom: var(--spacing-16);
+	font-size: var(--font-size-h4);
+	font-weight: var(--font-weight-bold);
+}
+
+h5,
+.h5 {
+	margin-bottom: var(--spacing-16);
+	font-size: var(--font-size-h5);
+	font-weight: var(--font-weight-bold);
+}
+
+small,
+.small {
+	font-size: var(--font-size-small);
 }

@@ -88,56 +88,56 @@ $fontSize: (
 /* =========================
   spacing
 ========================= */
-$spacing: 8, 16, 24, 32, 40, 48;
+$spacing: 0, 4, 8, 16, 24, 32, 40, 48;
 
 @each $s in $spacing {
 	// margin
 	.m-#{$s} {
-		margin: var(--spacing-#{$s});
+		margin: var(--spacing-#{$s}) !important;
 	}
 	.mt-#{$s} {
-		margin-top: var(--spacing-#{$s});
+		margin-top: var(--spacing-#{$s}) !important;
 	}
 	.mr-#{$s} {
-		margin-right: var(--spacing-#{$s});
+		margin-right: var(--spacing-#{$s}) !important;
 	}
 	.mb-#{$s} {
-		margin-bottom: var(--spacing-#{$s});
+		margin-bottom: var(--spacing-#{$s}) !important;
 	}
 	.ml-#{$s} {
-		margin-left: var(--spacing-#{$s});
+		margin-left: var(--spacing-#{$s}) !important;
 	}
 	.mx-#{$s} {
-		margin-left: var(--spacing-#{$s});
-		margin-right: var(--spacing-#{$s});
+		margin-left: var(--spacing-#{$s}) !important;
+		margin-right: var(--spacing-#{$s}) !important;
 	}
 	.my-#{$s} {
-		margin-top: var(--spacing-#{$s});
-		margin-bottom: var(--spacing-#{$s});
+		margin-top: var(--spacing-#{$s}) !important;
+		margin-bottom: var(--spacing-#{$s}) !important;
 	}
 
 	// padding
 	.p-#{$s} {
-		padding: var(--spacing-#{$s});
+		padding: var(--spacing-#{$s}) !important;
 	}
 	.pt-#{$s} {
-		padding-top: var(--spacing-#{$s});
+		padding-top: var(--spacing-#{$s}) !important;
 	}
 	.pr-#{$s} {
-		padding-right: var(--spacing-#{$s});
+		padding-right: var(--spacing-#{$s}) !important;
 	}
 	.pb-#{$s} {
-		padding-bottom: var(--spacing-#{$s});
+		padding-bottom: var(--spacing-#{$s}) !important;
 	}
 	.pl-#{$s} {
-		padding-left: var(--spacing-#{$s});
+		padding-left: var(--spacing-#{$s}) !important;
 	}
 	.px-#{$s} {
-		padding-left: var(--spacing-#{$s});
-		padding-right: var(--spacing-#{$s});
+		padding-left: var(--spacing-#{$s}) !important;
+		padding-right: var(--spacing-#{$s}) !important;
 	}
 	.py-#{$s} {
-		padding-top: var(--spacing-#{$s});
-		padding-bottom: var(--spacing-#{$s});
+		padding-top: var(--spacing-#{$s}) !important;
+		padding-bottom: var(--spacing-#{$s}) !important;
 	}
 }
