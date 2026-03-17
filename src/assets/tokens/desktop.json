@@ -51,7 +51,10 @@
     }
   },
   "radius": {
-    "base": {
+    "small": {
+      "value": "4px"
+    },
+    "normal": {
       "value": "8px"
     },
     "full": {

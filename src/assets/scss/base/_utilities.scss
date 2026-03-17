@@ -141,3 +141,102 @@ $spacing: 0, 4, 8, 16, 24, 32, 40, 48;
 		padding-bottom: var(--spacing-#{$s}) !important;
 	}
 }
+
+/* =========================
+  display
+========================= */
+$displays: (
+	block: block,
+	inline: inline,
+	inline-block: inline-block,
+	none: none,
+	grid: grid,
+	flex: flex,
+	inline-flex: inline-flex,
+	table: table,
+	table-cell: table-cell
+);
+
+$flex-layout: (
+	1: 1 1 0%,
+	auto: 1 1 auto,
+	initial: 0 1 auto
+);
+
+$flex-wrap: (
+	nowrap: nowrap,
+	wrap: wrap,
+	reverse: wrap-reverse
+);
+
+$flex-direction: (
+	row: row,
+	row-reverse: row-reverse,
+	col: column,
+	col-reverse: column-reverse
+);
+
+$justify-content: (
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	around: space-around,
+	between: space-between,
+	evenly: space-evenly
+);
+
+$align-items: (
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	stretch: stretch,
+	baseline: baseline
+);
+
+$flex-gap: (
+	col: column,
+	row: row
+);
+
+@mixin display-properties($name, $prop, $arr) {
+	@each $mod, $dir in $arr {
+		.#{$mod} {
+			#{$prop}: #{$dir} !important;
+		}
+	}
+}
+
+@mixin flex-properties($name, $prop, $arr) {
+	@each $mod, $dir in $arr {
+		.#{$name}-#{$mod} {
+			#{$prop}: #{$dir} !important;
+		}
+	}
+}
+
+@mixin flex-spacing($name, $prop, $arr) {
+	@each $mod, $dir in $arr {
+		// .gap-col-*
+		@if $mod == "col" or "row" and "" {
+			@each $s in $spacing {
+				.#{$name}-#{$mod}-#{$s} {
+					#{$dir}-#{$prop}: var(--spacing-#{$s}) !important;
+				}
+			}
+		}
+		// .gap-*
+		@each $s in $spacing {
+			.#{$name}-#{$s} {
+				#{$prop}: var(--spacing-#{$s}) !important;
+			}
+		}
+	}
+}
+
+@include display-properties("", "display", $displays);
+@include flex-properties("flex", "flex", $flex-layout);
+@include flex-properties("flex", "flex-wrap", $flex-wrap);
+@include flex-properties("flex", "flex-direction", $flex-direction);
+@include flex-properties("justify", "justify-content", $justify-content);
+@include flex-properties("items", "align-items", $align-items);
+@include flex-spacing("gap", "gap", $flex-gap);

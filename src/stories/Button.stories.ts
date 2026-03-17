@@ -1,53 +1,92 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import VButton from '@/components/VButton.vue'
+import * as icons from 'lucide-vue-next'
 
-import { fn } from 'storybook/test';
+const meta: Meta<typeof VButton> = {
+  title: 'Components/Button',
+  component: VButton,
 
-import Button from './Button.vue';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
-  title: 'Example/Button',
-  component: Button,
-  // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
   argTypes: {
-    size: { control: 'select', options: ['small', 'medium', 'large'] },
-    backgroundColor: { control: 'color' },
+    disabled: {
+      control: 'boolean',
+    },
+    variant: {
+      options: [undefined, 'primary', 'secondary', 'danger', 'text'],
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          primary: 'Primary',
+          secondary: 'Secondary',
+          danger: 'Danger',
+          text: 'Only text',
+        },
+      },
+    },
+    size: {
+      options: ['xs', 'sm', 'md', 'lg'],
+      control: {
+        type: 'radio',
+        labels: {
+          xs: 'xsmall',
+          sm: 'small',
+          md: 'medium',
+          lg: 'large',
+        },
+      },
+    },
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+    },
   },
-  args: {
-    primary: false,
-    // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-    onClick: fn(),
-  },
-} satisfies Meta<typeof Button>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+  tags: ['autodocs'],
+}
 
-export const Primary: Story = {
-  args: {
-    primary: true,
-    label: 'Button',
-  },
-};
+export default meta
 
-export const Secondary: Story = {
-  args: {
-    primary: false,
-    label: 'Button',
-  },
-};
+type Story = StoryObj<typeof VButton>
 
-export const Large: Story = {
+export const Playground: Story = {
   args: {
-    label: 'Button',
-    size: 'large',
+    default: 'Button',
   },
-};
+}
 
-export const Small: Story = {
-  args: {
-    label: 'Button',
-    size: 'small',
-  },
-};
+export const Basic: Story = {
+  render: () => ({
+    components: { VButton },
+    template: `
+			<VButton>Default</VButton>
+			<VButton disabled>Default</VButton>
+			<VButton icon="Search">Default</VButton>
+			<VButton icon="Search" iconOnly />
+    `,
+  }),
+}
+
+export const Size: Story = {
+  render: () => ({
+    components: { VButton },
+    template: `
+			<VButton size="xs">xsmall</VButton>
+			<VButton size="sm">small</VButton>
+			<VButton>Medium(Default)</VButton>
+			<VButton size="lg">large</VButton>
+    `,
+  }),
+}
+
+export const Variants: Story = {
+  render: () => ({
+    components: { VButton },
+    template: `
+			<VButton>Default</VButton>
+			<VButton variant="primary">Primary</VButton>
+			<VButton variant="secondary">Secondary</VButton>
+			<VButton variant="danger">Danger</VButton>
+			<VButton variant="text">Text</VButton>
+    `,
+  }),
+}

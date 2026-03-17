@@ -2,18 +2,18 @@
   <span
     class="icon"
     :style="{
-      width: sizeScale[props.size],
-      height: sizeScale[props.size],
+      width: sizeIcon[props.size],
+      height: sizeIcon[props.size],
     }"
   >
-    <component :is="icon" :size="sizeScale[props.size]" />
+    <component :is="icon" :size="sizeIcon[props.size]" />
   </span>
 </template>
 
 <script setup lang="ts">
 import * as icons from 'lucide-vue-next'
 import { computed, type Component } from 'vue'
-import { sizeScale } from '@/assets/tokens/size'
+import { sizeIcon } from '@/assets/tokens/size'
 
 const props = withDefaults(
   defineProps<{

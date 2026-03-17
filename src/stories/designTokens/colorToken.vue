@@ -76,7 +76,7 @@ h3 {
     padding: var(--spacing-16);
     display: flex;
     border: 1px solid var(--color-secondary-500);
-    border-radius: var(--radius-base);
+    border-radius: var(--radius-normal);
     overflow: hidden;
     align-items: center;
     gap: var(--spacing-16);
@@ -86,7 +86,7 @@ h3 {
       width: 6rem;
       height: 6rem;
       border: 1px solid var(--color-secondary-900);
-      border-radius: var(--radius-base);
+      border-radius: var(--radius-normal);
     }
 
     .info {

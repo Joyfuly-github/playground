@@ -16,7 +16,7 @@
     height: 16rem;
     display: flex;
     border: 1px solid var(--color-secondary-500);
-    border-radius: var(--radius-base);
+    border-radius: var(--radius-normal);
     justify-content: center;
     align-items: center;
     flex-direction: column;
