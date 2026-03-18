@@ -1,41 +1,43 @@
 <template>
-  <template v-for="(group, title) in groupTokens" :key="title">
-    <h3 class="mb-8" :class="{ 'mt-48': title !== 'basic' }">{{ title }}</h3>
+  <div class="w-full">
+    <template v-for="(group, title) in groupTokens" :key="title">
+      <h3 class="mb-8" :class="{ 'mt-48': title !== 'basic' }">{{ title }}</h3>
 
-    <ul class="list-preview">
-      <li v-for="(value, name) in group" :key="name">
-        <div class="box" :class="`bg-${name.replace('--color-', '')}`"></div>
+      <ul class="list-preview">
+        <li v-for="(value, name) in group" :key="name">
+          <div class="box" :class="`bg-${name.replace('--color-', '')}`"></div>
 
-        <div class="info">
-          <p class="h5 mb-0">
-            {{ name }}
-          </p>
-          <p class="color-secondary-900">{{ value }}</p>
-        </div>
+          <div class="info">
+            <p class="h5 mb-0">
+              {{ name }}
+            </p>
+            <p class="color-secondary-900">{{ value }}</p>
+          </div>
 
-        <div class="code">
-          <p class="small">
-            <button>
-              bg-{{ name }}
-              <VIcon :name="'Copy'" :size="'xs'" />
-            </button>
-          </p>
-          <p class="small">
-            <button>
-              text-{{ name }}
-              <VIcon :name="'Copy'" :size="'xs'" />
-            </button>
-          </p>
-          <p class="small">
-            <button>
-              border-{{ name }}
-              <VIcon :name="'Copy'" :size="'xs'" />
-            </button>
-          </p>
-        </div>
-      </li>
-    </ul>
-  </template>
+          <div class="code">
+            <p class="small">
+              <button>
+                bg-{{ name }}
+                <VIcon :name="'Copy'" :size="'xs'" />
+              </button>
+            </p>
+            <p class="small">
+              <button>
+                text-{{ name }}
+                <VIcon :name="'Copy'" :size="'xs'" />
+              </button>
+            </p>
+            <p class="small">
+              <button>
+                border-{{ name }}
+                <VIcon :name="'Copy'" :size="'xs'" />
+              </button>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </template>
+  </div>
 </template>
 
 <script setup lang="ts">

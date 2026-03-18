@@ -23,7 +23,8 @@ const preview: Preview = {
   decorators: [
     (story) => ({
       components: { story },
-      template: '<div class="w-full h-hull flex gap-8 justify-center items-center"><story /></div>',
+      template:
+        '<div class="w-full h-hull flex gap-8 justify-center items-center flex-wrap"><story /></div>',
     }),
   ],
 }
