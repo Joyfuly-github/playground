@@ -5,7 +5,6 @@ import * as icons from 'lucide-vue-next'
 const meta: Meta<typeof VIcon> = {
   title: 'Components/Icon',
   component: VIcon,
-
   argTypes: {
     name: {
       control: 'select',
@@ -23,8 +22,6 @@ const meta: Meta<typeof VIcon> = {
       },
     },
   },
-
-  tags: ['autodocs'],
 }
 
 export default meta

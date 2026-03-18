@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { fn } from 'storybook/test'
+
 import VButton from '@/components/VButton.vue'
 import * as icons from 'lucide-vue-next'
 
 const meta: Meta<typeof VButton> = {
   title: 'Components/Button',
   component: VButton,
-
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -40,8 +41,6 @@ const meta: Meta<typeof VButton> = {
       options: Object.keys(icons),
     },
   },
-
-  tags: ['autodocs'],
 }
 
 export default meta
@@ -51,6 +50,7 @@ type Story = StoryObj<typeof VButton>
 export const Playground: Story = {
   args: {
     default: 'Button',
+    onClick: fn(),
   },
 }
 

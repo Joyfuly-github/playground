@@ -1,7 +1,15 @@
 import '@assets/scss/base/font.css'
 import '@assets/scss/main.scss'
-
 import type { Preview } from '@storybook/vue3-vite'
+// import * as React from 'react'
+// import {
+//   Title,
+//   Subtitle,
+//   Description,
+//   Primary,
+//   Controls,
+//   Stories,
+// } from '@storybook/addon-docs/blocks'
 
 const preview: Preview = {
   parameters: {
@@ -12,6 +20,19 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    // 사용 시 .tsx로 변경 후 사용
+    // docs: {
+    //   page: () => (
+    //     <>
+    //       <Title />
+    //       <Subtitle />
+    //       <Description />
+    //       <Primary />
+    //       <Controls />
+    //       <Stories />
+    //     </>
+    //   ),
+    // },
 
     a11y: {
       // 'todo' - show a11y violations in the test UI only
@@ -23,9 +44,10 @@ const preview: Preview = {
   decorators: [
     (story) => ({
       components: { story },
-      template: '<div class="w-full h-hull flex-center gap-8 flex-wrap"><story /></div>',
+      template: '<div class="w-full h-full flex-center gap-8 flex-wrap"><story /></div>',
     }),
   ],
+  tags: ['autodocs'],
 }
 
 export default preview
