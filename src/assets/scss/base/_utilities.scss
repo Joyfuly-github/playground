@@ -140,50 +140,51 @@ $spacing: 0, 4, 8, 16, 24, 32, 40, 48;
 		padding-top: var(--spacing-#{$s}) !important;
 		padding-bottom: var(--spacing-#{$s}) !important;
 	}
+
+	// gap
+	.gap-#{$s} {
+		gap: var(--spacing-#{$s}) !important;
+	}
+
+	.gap-column-#{$s} {
+		column-gap: var(--spacing-#{$s}) !important;
+	}
+
+	.gap-row-#{$s} {
+		row-gap: var(--spacing-#{$s}) !important;
+	}
 }
 
 /* =========================
   display
 ========================= */
-$displays: (
-	block: block,
-	inline: inline,
-	inline-block: inline-block,
-	none: none,
-	grid: grid,
-	flex: flex,
-	inline-flex: inline-flex,
-	table: table,
-	table-cell: table-cell
-);
+$display: (block, inline, inline-block, flex, inline-flex, grid, none);
+@each $d in $display {
+	.#{$d} {
+		display: $d;
+	}
+}
 
-$flex-layout: (
-	1: 1 1 0%,
-	auto: 1 1 auto,
-	initial: 0 1 auto
-);
-
-$flex-wrap: (
-	nowrap: nowrap,
-	wrap: wrap,
-	reverse: wrap-reverse
-);
-
-$flex-direction: (
-	row: row,
-	row-reverse: row-reverse,
-	col: column,
-	col-reverse: column-reverse
-);
+$flex-direction: row, row-reverse, column, column-reverse;
+@each $dir in $flex-direction {
+	.flex-#{$dir} {
+		flex-direction: $dir;
+	}
+}
 
 $justify-content: (
 	start: flex-start,
 	end: flex-end,
 	center: center,
-	around: space-around,
 	between: space-between,
+	around: space-around,
 	evenly: space-evenly
 );
+@each $name, $value in $justify-content {
+	.justify-#{$name} {
+		justify-content: $value;
+	}
+}
 
 $align-items: (
 	start: flex-start,
@@ -192,51 +193,39 @@ $align-items: (
 	stretch: stretch,
 	baseline: baseline
 );
-
-$flex-gap: (
-	col: column,
-	row: row
-);
-
-@mixin display-properties($name, $prop, $arr) {
-	@each $mod, $dir in $arr {
-		.#{$mod} {
-			#{$prop}: #{$dir} !important;
-		}
+@each $name, $value in $align-items {
+	.items-#{$name} {
+		align-items: $value;
 	}
 }
 
-@mixin flex-properties($name, $prop, $arr) {
-	@each $mod, $dir in $arr {
-		.#{$name}-#{$mod} {
-			#{$prop}: #{$dir} !important;
-		}
+$flex-wrap: wrap, nowrap, wrap-reverse;
+@each $w in $flex-wrap {
+	.flex-#{$w} {
+		flex-wrap: $w;
 	}
 }
 
-@mixin flex-spacing($name, $prop, $arr) {
-	@each $mod, $dir in $arr {
-		// .gap-col-*
-		@if $mod == "col" or "row" and "" {
-			@each $s in $spacing {
-				.#{$name}-#{$mod}-#{$s} {
-					#{$dir}-#{$prop}: var(--spacing-#{$s}) !important;
-				}
-			}
-		}
-		// .gap-*
-		@each $s in $spacing {
-			.#{$name}-#{$s} {
-				#{$prop}: var(--spacing-#{$s}) !important;
-			}
-		}
-	}
+.flex-1 {
+	flex: 1;
 }
 
-@include display-properties("", "display", $displays);
-@include flex-properties("flex", "flex", $flex-layout);
-@include flex-properties("flex", "flex-wrap", $flex-wrap);
-@include flex-properties("flex", "flex-direction", $flex-direction);
-@include flex-properties("justify", "justify-content", $justify-content);
-@include flex-properties("items", "align-items", $align-items);
-@include flex-spacing("gap", "gap", $flex-gap);
+.flex-auto {
+	flex: auto;
+}
+
+.flex-none {
+	flex: none;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
