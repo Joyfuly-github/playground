@@ -6,7 +6,7 @@
       height: sizeIcon[props.size],
     }"
   >
-    <component :is="icon" :size="sizeIcon[props.size]" />
+    <component :is="icon" :size="sizeIcon[props.size]" :strokeWidth="0.75" />
   </span>
 </template>
 

@@ -41,6 +41,12 @@ const meta: Meta<typeof VButton> = {
       options: Object.keys(icons),
     },
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: '<div class="w-full h-full flex gap-8 flex-wrap"><story /></div>',
+    }),
+  ],
 }
 
 export default meta

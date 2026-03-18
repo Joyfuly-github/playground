@@ -18,9 +18,11 @@ declare module 'vue' {
     IconEcosystem: typeof import('./components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./components/icons/IconTooling.vue')['default']
+    Input: typeof import('./components/input.vue')['default']
     TheWelcome: typeof import('./components/TheWelcome.vue')['default']
     VButton: typeof import('./components/VButton.vue')['default']
     VIcon: typeof import('./components/VIcon.vue')['default']
+    VInput: typeof import('./components/VInput.vue')['default']
     WelcomeItem: typeof import('./components/WelcomeItem.vue')['default']
   }
 }

@@ -12,6 +12,14 @@
       "value": "#cccccc",
       "type": "color"
     },
+    "bg": {
+      "value": "#f9f9F9",
+      "type": "color"
+    },
+    "disabled": {
+      "value": "#999999",
+      "type": "color"
+    },
     "primary": {
       "900": {
         "value": "#DB2777",

@@ -2,6 +2,7 @@
   <button
     v-bind="attrs"
     :disabled="disabled"
+    class="btn"
     :class="buttonClass"
     :style="{
       ...(props.variant !== 'text' && {
@@ -49,7 +50,6 @@ const emit = defineEmits<{
 const attrs = useAttrs()
 
 const buttonClass = computed(() => [
-  'btn',
   `btn-${props.size}`,
   props.variant && `btn-${props.variant}`,
   {
@@ -81,12 +81,9 @@ const handleClick = (event: MouseEvent) => {
     text-decoration: underline;
   }
 
-  &.btn-xs {
+  &.btn-xs,
+  &.btn-sm {
     padding: 0 var(--spacing-8);
-  }
-
-  &.btn-lg {
-    padding: 0 var(--spacing-24);
   }
 
   &.btn-icon {
@@ -97,30 +94,18 @@ const handleClick = (event: MouseEvent) => {
     background-color: var(--color-primary-100);
     border-color: var(--color-primary-900);
     color: var(--color-primary-900);
-
-    // background-color: var(--color-primary-900);
-    // border-color: var(--color-primary-900);
-    // color: var(--color-white);
   }
 
   &.btn-secondary {
     background-color: var(--color-secondary-100);
     border-color: var(--color-secondary-900);
     color: var(--color-secondary-900);
-
-    // background-color: var(--color-secondary-900);
-    // border-color: var(--color-secondary-900);
-    // color: var(--color-white);
   }
 
   &.btn-danger {
     background-color: var(--color-danger-100);
     border-color: var(--color-danger-900);
     color: var(--color-danger-900);
-
-    // background-color: var(--color-danger-900);
-    // border-color: var(--color-danger-900);
-    // color: var(--color-white);
   }
 
   &.btn-text {
@@ -129,25 +114,18 @@ const handleClick = (event: MouseEvent) => {
     border: none;
   }
 
-  &.full {
-    width: 100%;
-    display: flex;
-  }
-
   &.disabled {
-    background-color: var(--color-secondary-100);
+    background-color: var(--color-bg);
     border-color: var(--color-gray);
-    color: var(--color-gray);
+    color: var(--color-disabled);
     cursor: default;
   }
 
   &:has(.icon):not(.btn-icon) {
-    &:not(.btn-text) {
-      :deep(.icon) {
-        transform: translateX(-50%);
-      }
-    }
+    gap: var(--spacing-8);
 
+    &.btn-xs,
+    &.btn-sm,
     &.btn-text {
       gap: var(--spacing-4);
     }

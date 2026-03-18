@@ -41,12 +41,7 @@ const preview: Preview = {
       test: 'todo',
     },
   },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: '<div class="w-full h-full flex-center gap-8 flex-wrap"><story /></div>',
-    }),
-  ],
+
   tags: ['autodocs'],
 }
 
