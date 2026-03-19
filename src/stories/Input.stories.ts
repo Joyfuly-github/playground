@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
 
-import Input from '@/components/Input.vue'
 import Icon from '@/components/Icon.vue'
+import Input from '@/components/Input.vue'
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
