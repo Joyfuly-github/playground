@@ -66,7 +66,9 @@
     </div>
 
     <!-- search button -->
-    <Button v-if="search" :size="size" variant="secondary" @click="onSearch"> Search </Button>
+    <BaseButton v-if="search" :size="size" variant="secondary" @click="onSearch">
+      Search
+    </BaseButton>
 
     <!-- 확장 버튼 슬롯 -->
     <slot name="buttons" />
@@ -81,7 +83,7 @@
 <script setup lang="ts">
 import { computed, ref, useSlots } from 'vue'
 import { sizeDefault } from '@/assets/tokens/size'
-import Button from '@/components/Button.vue'
+import BaseButton from '@/components/BaseButton.vue'
 
 const props = withDefaults(
   defineProps<{

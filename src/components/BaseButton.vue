@@ -12,7 +12,7 @@
     }"
     @click="handleClick"
   >
-    <Icon v-if="icon" :type="icon" />
+    <BaseIcon v-if="icon" :type="icon" />
     <slot />
   </button>
 </template>
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import * as icons from 'lucide-vue-next'
 import { sizeDefault } from '@/assets/tokens/size'
-import Icon from '@/components/Icon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 defineOptions({
   inheritAttrs: false,

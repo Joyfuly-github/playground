@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import Icon from '@/components/Icon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import * as icons from 'lucide-vue-next'
 
-const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
-  component: Icon,
+const meta: Meta<typeof BaseIcon> = {
+  title: 'Components/BaseIcon',
+  component: BaseIcon,
   argTypes: {
     type: {
       control: 'select',
@@ -26,7 +26,7 @@ const meta: Meta<typeof Icon> = {
 
 export default meta
 
-type Story = StoryObj<typeof Icon>
+type Story = StoryObj<typeof BaseIcon>
 
 export const Default: Story = {
   args: {

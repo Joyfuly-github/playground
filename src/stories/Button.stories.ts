@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
 
-import Button from '@/components/Button.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import * as icons from 'lucide-vue-next'
 
-const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
-  component: Button,
+const meta: Meta<typeof BaseButton> = {
+  title: 'Components/BaseButton',
+  component: BaseButton,
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -51,48 +51,48 @@ const meta: Meta<typeof Button> = {
 
 export default meta
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof BaseButton>
 
 export const Playground: Story = {
   args: {
-    default: 'Button',
+    default: 'BaseButton',
     onClick: fn(),
   },
 }
 
 export const Basic: Story = {
   render: () => ({
-    components: { Button },
+    components: { BaseButton },
     template: `
-			<Button>Default</Button>
-			<Button disabled>Default</Button>
-			<Button icon="Search">Default</Button>
-			<Button icon="Search" iconOnly />
+			<BaseButton>Default</BaseButton>
+			<BaseButton disabled>Default</BaseButton>
+			<BaseButton icon="Search">Default</BaseButton>
+			<BaseButton icon="Search" iconOnly />
     `,
   }),
 }
 
 export const Size: Story = {
   render: () => ({
-    components: { Button },
+    components: { BaseButton },
     template: `
-			<Button size="xs">xsmall</Button>
-			<Button size="sm">small</Button>
-			<Button>Medium(Default)</Button>
-			<Button size="lg">large</Button>
+			<BaseButton size="xs">xsmall</BaseButton>
+			<BaseButton size="sm">small</BaseButton>
+			<BaseButton>Medium(Default)</BaseButton>
+			<BaseButton size="lg">large</BaseButton>
     `,
   }),
 }
 
 export const Variants: Story = {
   render: () => ({
-    components: { Button },
+    components: { BaseButton },
     template: `
-			<Button>Default</Button>
-			<Button variant="primary">Primary</Button>
-			<Button variant="secondary">Secondary</Button>
-			<Button variant="danger">Danger</Button>
-			<Button variant="text">Text</Button>
+			<BaseButton>Default</BaseButton>
+			<BaseButton variant="primary">Primary</BaseButton>
+			<BaseButton variant="secondary">Secondary</BaseButton>
+			<BaseButton variant="danger">Danger</BaseButton>
+			<BaseButton variant="text">Text</BaseButton>
     `,
   }),
 }

@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import * as icons from 'lucide-vue-next'
 import { computed, type Component } from 'vue'
-// import { sizeIcon } from '@/assets/tokens/size'
+// import { sizeBaseIcon } from '@/assets/tokens/size'
 
 const props = defineProps<{
   type: keyof typeof icons

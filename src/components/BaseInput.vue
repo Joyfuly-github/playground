@@ -29,7 +29,9 @@
       <slot name="suffix"></slot>
     </div>
 
-    <VButton v-if="search" :size="size" variant="secondary" @click="onSearch">Search</VButton>
+    <VBaseButton v-if="search" :size="size" variant="secondary" @click="onSearch"
+      >Search</VBaseButton
+    >
     <slot name="buttons"></slot>
   </div>
 </template>
@@ -96,5 +98,3 @@ const onSearch = (event: MouseEvent) => {
   emit('search', event)
 }
 </script>
-
-<style lang="scss" scoped></style>

@@ -18,19 +18,19 @@
             <p class="small">
               <button>
                 bg-{{ name }}
-                <Icon :type="'Copy'" :size="'xs'" />
+                <BaseIcon :type="'Copy'" :size="'xs'" />
               </button>
             </p>
             <p class="small">
               <button>
                 text-{{ name }}
-                <Icon :type="'Copy'" :size="'xs'" />
+                <BaseIcon :type="'Copy'" :size="'xs'" />
               </button>
             </p>
             <p class="small">
               <button>
                 border-{{ name }}
-                <Icon :type="'Copy'" :size="'xs'" />
+                <BaseIcon :type="'Copy'" :size="'xs'" />
               </button>
             </p>
           </div>
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { flattenTokens } from '@/assets/build/flattenToToken'
 import color from '@/assets/tokens/color.json'
-import Icon from '@/components/Icon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 const tokens = flattenTokens(color)
 const groupTokens = titleTokens(tokens)
