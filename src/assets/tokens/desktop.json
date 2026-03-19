@@ -55,10 +55,10 @@
   },
   "radius": {
     "small": {
-      "value": "8px"
+      "value": "4px"
     },
     "normal": {
-      "value": "16px"
+      "value": "8px"
     },
     "full": {
       "value": "9999px"

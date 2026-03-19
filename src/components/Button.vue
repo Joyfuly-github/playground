@@ -88,6 +88,12 @@ const handleClick = (event: MouseEvent) => {
 
   &.btn-icon {
     padding: 0 var(--spacing-8);
+    &.btn-text {
+      border-radius: var(--radius-full);
+      &:hover {
+        background-color: var(--color-secondary-100);
+      }
+    }
   }
 
   &.btn-primary {

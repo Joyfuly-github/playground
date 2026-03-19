@@ -16,7 +16,7 @@
       <slot name="prefix"></slot>
 
       <input
-        v-model="value"
+        v-model="inputValue"
         :type="type"
         :placeholder="placeholder"
         :id="id"
@@ -26,10 +26,19 @@
         class="input-text"
       />
 
+      <Button
+        v-if="hasValue && !disabled && !readonly"
+        icon="X"
+        variant="text"
+        iconOnly
+        @mousedown.prevent
+        @click="onClear"
+      />
+
       <slot name="suffix"></slot>
     </div>
 
-    <BaseButton v-if="search" :size="size" variant="secondary" @click="onSearch">Search</BaseButton>
+    <Button v-if="search" :size="size" variant="secondary" @click="onSearch">Search</Button>
     <slot name="buttons"></slot>
   </div>
 </template>
@@ -62,8 +71,9 @@ const props = withDefaults(
 )
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | null): void
+  (e: 'update:modelValue', value: string): void
   (e: 'search', event: MouseEvent): void
+  (e: 'clear'): void
 }>()
 
 const slots = useSlots()
@@ -86,13 +96,28 @@ const inputClass = computed(() => [
 	enter event
 */
 
-const value = computed({
+const inputValue = computed({
   get: () => props.modelValue,
   set: (val: string) => emit('update:modelValue', val),
 })
+
+const hasValue = computed(() => !!inputValue.value.length)
 
 const onSearch = (event: MouseEvent) => {
   ;(document.activeElement as HTMLElement)?.blur()
   emit('search', event)
 }
+
+const onClear = () => {
+  console.log('onClear', hasValue.value)
+  inputValue.value = ''
+  emit('clear')
+}
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    console.log('modelValue:', val)
+  },
+)
 </script>
