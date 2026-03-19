@@ -29,9 +29,7 @@
       <slot name="suffix"></slot>
     </div>
 
-    <VBaseButton v-if="search" :size="size" variant="secondary" @click="onSearch"
-      >Search</VBaseButton
-    >
+    <BaseButton v-if="search" :size="size" variant="secondary" @click="onSearch">Search</BaseButton>
     <slot name="buttons"></slot>
   </div>
 </template>

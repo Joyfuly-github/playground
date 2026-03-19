@@ -25,22 +25,16 @@
           >Welcome, <b>{{ user.name }}</b
           >!</span
         >
-        <BaseButton size="sm" @click="$emit('logout')" label="Log out" v-if="user" />
-        <BaseButton size="sm" @click="$emit('login')" label="Log in" v-if="!user" />
-        <BaseButton
-          primary
-          size="sm"
-          @click="$emit('createAccount')"
-          label="Sign up"
-          v-if="!user"
-        />
+        <Button size="sm" @click="$emit('logout')" label="Log out" v-if="user" />
+        <Button size="sm" @click="$emit('login')" label="Log in" v-if="!user" />
+        <Button primary size="sm" @click="$emit('createAccount')" label="Sign up" v-if="!user" />
       </div>
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
-import BaseButton from '@/components/BaseButton.vue'
+import Button from '@/components/Button.vue'
 import './header.css'
 
 defineProps<{ user: { name: string } | null }>()

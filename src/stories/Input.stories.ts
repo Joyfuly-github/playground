@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
 
-import BaseInput from '@/components/BaseInput.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import Input from '@/components/Input.vue'
+import Icon from '@/components/Icon.vue'
 
-const meta: Meta<typeof BaseInput> = {
-  title: 'Components/BaseInput',
-  component: BaseInput,
+const meta: Meta<typeof Input> = {
+  title: 'Components/Input',
+  component: Input,
   argTypes: {
     type: {
       options: ['text', 'password'],
@@ -43,7 +43,7 @@ const meta: Meta<typeof BaseInput> = {
 
 export default meta
 
-type Story = StoryObj<typeof BaseInput>
+type Story = StoryObj<typeof Input>
 
 export const Default: Story = {
   args: {
@@ -52,13 +52,13 @@ export const Default: Story = {
     modelValue: 'Value',
   },
   render: (args) => ({
-    components: { BaseInput },
+    components: { Input },
     setup() {
       const value = ref(args.modelValue)
       return { args, value }
     },
     template: `
-      <BaseInput v-model="value" v-bind="args" />
+      <Input v-model="value" v-bind="args" />
     `,
   }),
 }
@@ -77,14 +77,14 @@ export const SlotInput: Story = {
     placeholder: 'example.com',
   },
   render: () => ({
-    components: { BaseInput, BaseIcon },
+    components: { Input, Icon },
     template: `
-			<BaseInput size="md">
+			<Input size="md">
 				<template #prefix>https://</template>
 				<template #suffix>
-					<BaseIcon size="md" type="Bookmark"></BaseIcon>
+					<Icon size="md" type="Bookmark"></Icon>
 				</template>
-			</BaseInput>
+			</Input>
     `,
   }),
 }
