@@ -2,13 +2,13 @@
   "font": {
     "size": {
       "h1": {
-        "value": "28px"
+        "value": "40px"
       },
       "h2": {
-        "value": "24px"
+        "value": "32px"
       },
       "h3": {
-        "value": "20px"
+        "value": "24px"
       },
       "h4": {
         "value": "18px"
@@ -25,6 +25,9 @@
     }
   },
   "spacing": {
+    "56": {
+      "value": "48px"
+    },
     "48": {
       "value": "40px"
     },

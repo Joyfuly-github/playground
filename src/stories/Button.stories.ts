@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
 
-import VButton from '@/components/VButton.vue'
+import Button from '@/components/Button.vue'
 import * as icons from 'lucide-vue-next'
 
-const meta: Meta<typeof VButton> = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
-  component: VButton,
+  component: Button,
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -51,7 +51,7 @@ const meta: Meta<typeof VButton> = {
 
 export default meta
 
-type Story = StoryObj<typeof VButton>
+type Story = StoryObj<typeof Button>
 
 export const Playground: Story = {
   args: {
@@ -62,37 +62,37 @@ export const Playground: Story = {
 
 export const Basic: Story = {
   render: () => ({
-    components: { VButton },
+    components: { Button },
     template: `
-			<VButton>Default</VButton>
-			<VButton disabled>Default</VButton>
-			<VButton icon="Search">Default</VButton>
-			<VButton icon="Search" iconOnly />
+			<Button>Default</Button>
+			<Button disabled>Default</Button>
+			<Button icon="Search">Default</Button>
+			<Button icon="Search" iconOnly />
     `,
   }),
 }
 
 export const Size: Story = {
   render: () => ({
-    components: { VButton },
+    components: { Button },
     template: `
-			<VButton size="xs">xsmall</VButton>
-			<VButton size="sm">small</VButton>
-			<VButton>Medium(Default)</VButton>
-			<VButton size="lg">large</VButton>
+			<Button size="xs">xsmall</Button>
+			<Button size="sm">small</Button>
+			<Button>Medium(Default)</Button>
+			<Button size="lg">large</Button>
     `,
   }),
 }
 
 export const Variants: Story = {
   render: () => ({
-    components: { VButton },
+    components: { Button },
     template: `
-			<VButton>Default</VButton>
-			<VButton variant="primary">Primary</VButton>
-			<VButton variant="secondary">Secondary</VButton>
-			<VButton variant="danger">Danger</VButton>
-			<VButton variant="text">Text</VButton>
+			<Button>Default</Button>
+			<Button variant="primary">Primary</Button>
+			<Button variant="secondary">Secondary</Button>
+			<Button variant="danger">Danger</Button>
+			<Button variant="text">Text</Button>
     `,
   }),
 }

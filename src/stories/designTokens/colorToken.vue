@@ -18,19 +18,19 @@
             <p class="small">
               <button>
                 bg-{{ name }}
-                <VIcon :name="'Copy'" :size="'xs'" />
+                <Icon :type="'Copy'" :size="'xs'" />
               </button>
             </p>
             <p class="small">
               <button>
                 text-{{ name }}
-                <VIcon :name="'Copy'" :size="'xs'" />
+                <Icon :type="'Copy'" :size="'xs'" />
               </button>
             </p>
             <p class="small">
               <button>
                 border-{{ name }}
-                <VIcon :name="'Copy'" :size="'xs'" />
+                <Icon :type="'Copy'" :size="'xs'" />
               </button>
             </p>
           </div>
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { flattenTokens } from '@/assets/build/flattenToToken'
 import color from '@/assets/tokens/color.json'
-import VIcon from '@/components/VIcon.vue'
+import Icon from '@/components/Icon.vue'
 
 const tokens = flattenTokens(color)
 const groupTokens = titleTokens(tokens)

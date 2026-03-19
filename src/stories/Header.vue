@@ -25,29 +25,23 @@
           >Welcome, <b>{{ user.name }}</b
           >!</span
         >
-        <my-button size="small" @click="$emit('logout')" label="Log out" v-if="user" />
-        <my-button size="small" @click="$emit('login')" label="Log in" v-if="!user" />
-        <my-button
-          primary
-          size="small"
-          @click="$emit('createAccount')"
-          label="Sign up"
-          v-if="!user"
-        />
+        <Button size="sm" @click="$emit('logout')" label="Log out" v-if="user" />
+        <Button size="sm" @click="$emit('login')" label="Log in" v-if="!user" />
+        <Button primary size="sm" @click="$emit('createAccount')" label="Sign up" v-if="!user" />
       </div>
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
-import MyButton from './Button.vue';
-import './header.css';
+import Button from '@/components/Button.vue'
+import './header.css'
 
-defineProps<{ user: { name: string } | null }>();
+defineProps<{ user: { name: string } | null }>()
 
 defineEmits<{
-  (event: 'createAccount'): void;
-  (event: 'login'): void;
-  (event: 'logout'): void;
-}>();
+  (event: 'createAccount'): void
+  (event: 'login'): void
+  (event: 'logout'): void
+}>()
 </script>
