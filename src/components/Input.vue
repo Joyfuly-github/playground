@@ -1,3 +1,9 @@
+<!-- 
+	maxlength
+	error message
+	search enter event 
+	input type="number"
+-->
 <template>
   <label v-if="label" :for="id" class="label">
     {{ label }}
@@ -13,6 +19,8 @@
         fontSize: sizeDefault[props.size].fontSize,
       }"
     >
+      <Button v-if="search" icon="Search" variant="text" iconOnly @click="onSearch" />
+
       <slot name="prefix"></slot>
 
       <input
@@ -49,16 +57,16 @@ import { sizeDefault } from '@/assets/tokens/size'
 const props = withDefaults(
   defineProps<{
     modelValue: string
-    id: string
-    name: string
+    id?: string
+    name?: string
     type?: 'text' | 'password'
-    placeholder: string
+    placeholder?: string
     disabled?: boolean
     readonly?: boolean
     required?: boolean
     search?: boolean
     size?: 'xs' | 'sm' | 'md' | 'lg'
-    label: string
+    label?: string
   }>(),
   {
     type: 'text',
@@ -89,19 +97,12 @@ const inputClass = computed(() => [
   },
 ])
 
-/*
-	clear button
-`	maxlength
-	error message
-	enter event
-*/
-
 const inputValue = computed({
   get: () => props.modelValue,
   set: (val: string) => emit('update:modelValue', val),
 })
 
-const hasValue = computed(() => !!inputValue.value.length)
+const hasValue = computed(() => !!inputValue.value)
 
 const onSearch = (event: MouseEvent) => {
   ;(document.activeElement as HTMLElement)?.blur()
@@ -113,11 +114,4 @@ const onClear = () => {
   inputValue.value = ''
   emit('clear')
 }
-
-watch(
-  () => props.modelValue,
-  (val) => {
-    console.log('modelValue:', val)
-  },
-)
 </script>

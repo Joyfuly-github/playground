@@ -1,3 +1,7 @@
+<!--
+	Storybook Icon 관련 내용 보강
+	https://lucide.dev/ 
+-->
 <template>
   <span class="icon">
     <component :is="icon" class="svg" :strokeWidth="1.75" />

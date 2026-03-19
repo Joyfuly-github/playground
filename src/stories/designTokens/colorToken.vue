@@ -18,19 +18,19 @@
             <p class="small">
               <button>
                 bg-{{ name }}
-                <Icon :type="'Copy'" :size="'xs'" />
+                <Icon :type="'Copy'" />
               </button>
             </p>
             <p class="small">
               <button>
                 text-{{ name }}
-                <Icon :type="'Copy'" :size="'xs'" />
+                <Icon :type="'Copy'" />
               </button>
             </p>
             <p class="small">
               <button>
                 border-{{ name }}
-                <Icon :type="'Copy'" :size="'xs'" />
+                <Icon :type="'Copy'" />
               </button>
             </p>
           </div>

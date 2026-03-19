@@ -44,7 +44,7 @@ const meta: Meta<typeof Button> = {
   decorators: [
     (story) => ({
       components: { story },
-      template: '<div class="w-full h-full flex gap-8 flex-wrap"><story /></div>',
+      template: '<div class="w-full h-full flex-center gap-8 flex-wrap"><story /></div>',
     }),
   ],
 }

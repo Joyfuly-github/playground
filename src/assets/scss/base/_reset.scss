@@ -175,6 +175,11 @@ button {
 	font-size: inherit;
 	color: inherit;
 	vertical-align: middle;
+
+	&:focus-within,
+	&:hover {
+		outline: none;
+	}
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -217,7 +222,6 @@ textarea {
 	background: transparent;
 	border: 0;
 	overflow-y: auto;
-	resize: none;
 }
 a {
 	background: transparent;

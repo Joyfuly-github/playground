@@ -47,14 +47,15 @@ type Story = StoryObj<typeof Input>
 
 export const Default: Story = {
   args: {
+    required: true,
     label: 'Default',
     placeholder: 'Placeholder',
-    modelValue: 'Value',
+    onClear: fn(),
   },
   render: (args) => ({
     components: { Input },
     setup() {
-      const value = ref(args.modelValue)
+      const value = ref('')
       return { args, value }
     },
     template: `
@@ -67,24 +68,54 @@ export const Search: Story = {
   args: {
     label: 'Search',
     search: true,
+    onClear: fn(),
     onSearch: fn(),
   },
+  render: (args) => ({
+    components: { Input },
+    setup() {
+      const value = ref()
+      return { args, value }
+    },
+    template: `
+      <Input v-model="value" v-bind="args" />
+    `,
+  }),
 }
 
-export const SlotInput: Story = {
+export const InputGroup: Story = {
   args: {
     label: 'Homepage',
     placeholder: 'example.com',
+    onClear: fn(),
   },
-  render: () => ({
+  render: (args) => ({
     components: { Input, Icon },
+    setup() {
+      const value = ref()
+      return { args, value }
+    },
     template: `
-			<Input size="md">
+			<Input v-model="value" v-bind="args">
 				<template #prefix>https://</template>
 				<template #suffix>
-					<Icon size="md" type="Bookmark"></Icon>
+					<Icon type="Bookmark"></Icon>
 				</template>
 			</Input>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input label="Homepage" placeholder="example.com">
+  <template #prefix>https://</template>
+  <template #suffix>
+    <Icon type="Bookmark" />
+  </template>
+</Input>
+      `,
+      },
+    },
+  },
 }
