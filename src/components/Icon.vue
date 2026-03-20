@@ -19,18 +19,3 @@ const props = defineProps<{
 
 const icon = computed<Component>(() => icons[props.type] as Component)
 </script>
-
-<style lang="scss" scoped>
-.icon {
-  padding: var(--spacing-4);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-
-  .svg {
-    width: 1.2em;
-    height: 1.2em;
-  }
-}
-</style>

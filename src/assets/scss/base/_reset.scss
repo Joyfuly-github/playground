@@ -175,11 +175,6 @@ button {
 	font-size: inherit;
 	color: inherit;
 	vertical-align: middle;
-
-	&:focus-within,
-	&:hover {
-		outline: none;
-	}
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

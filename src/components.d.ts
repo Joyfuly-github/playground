@@ -20,6 +20,7 @@ declare module 'vue' {
     IconSupport: typeof import('./components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./components/icons/IconTooling.vue')['default']
     Input: typeof import('./components/Input.vue')['default']
+    Select: typeof import('./components/Select.vue')['default']
     Textarea: typeof import('./components/Textarea.vue')['default']
     TheWelcome: typeof import('./components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./components/WelcomeItem.vue')['default']

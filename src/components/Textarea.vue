@@ -16,8 +16,6 @@
       class="textarea"
       :class="textareaClass"
       :style="{
-        minHeight: sizeDefault[props.size].height,
-        fontSize: sizeDefault[props.size].fontSize,
         resize: resizeStyle,
       }"
     />
@@ -25,8 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { sizeDefault } from '@/assets/tokens/size'
-
 const props = withDefaults(
   defineProps<{
     modelValue: string
@@ -56,7 +52,7 @@ const emit = defineEmits<{
 }>()
 
 const textareaClass = computed(() => [
-  `input-${props.size}`,
+  `size size-${props.size}`,
   {
     disabled: props.disabled,
     readonly: props.readonly,

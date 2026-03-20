@@ -11,17 +11,19 @@
   </label>
 
   <div class="flex-center gap-8">
-    <div
-      class="input-group"
-      :class="inputClass"
-      :style="{
-        height: sizeDefault[props.size].height,
-        fontSize: sizeDefault[props.size].fontSize,
-      }"
-    >
-      <Button v-if="search" icon="Search" variant="text" iconOnly @click="onSearch" />
+    <div class="input-group" :class="inputClass">
+      <div v-if="search || $slots.prefix" class="prefix">
+        <Button
+          v-if="search"
+          :size="size"
+          icon="Search"
+          variant="text"
+          iconOnly
+          @click="onSearch"
+        />
 
-      <slot name="prefix"></slot>
+        <slot name="prefix"></slot>
+      </div>
 
       <input
         v-model="inputValue"
@@ -38,12 +40,15 @@
         v-if="hasValue && !disabled && !readonly"
         icon="X"
         variant="text"
+        :size="size"
         iconOnly
         @mousedown.prevent
         @click="onClear"
       />
 
-      <slot name="suffix"></slot>
+      <div v-if="$slots.suffix" class="suffix">
+        <slot name="suffix"></slot>
+      </div>
     </div>
 
     <Button v-if="search" :size="size" variant="secondary" @click="onSearch">Search</Button>
@@ -52,8 +57,6 @@
 </template>
 
 <script setup lang="ts">
-import { sizeDefault } from '@/assets/tokens/size'
-
 const props = withDefaults(
   defineProps<{
     modelValue: string
@@ -88,11 +91,11 @@ const slots = useSlots()
 const hasPrefix = computed(() => !!slots.prefix)
 const hasSuffix = computed(() => !!slots.suffix)
 const inputClass = computed(() => [
-  `input-${props.size}`,
+  `size size-${props.size}`,
   {
     disabled: props.disabled,
     readonly: props.readonly,
-    'has-prefix': hasPrefix.value,
+    'has-prefix': hasPrefix.value || props.search,
     'has-suffix': hasSuffix.value,
   },
 ])
