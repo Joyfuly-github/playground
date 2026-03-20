@@ -20,6 +20,7 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    // layout: 'centered',
     // 사용 시 .tsx로 변경 후 사용
     // docs: {
     //   page: () => (
