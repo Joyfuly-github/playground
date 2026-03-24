@@ -6,8 +6,9 @@
     v-bind="attrs"
     :disabled="disabled"
     class="btn"
-    :class="buttonClass"
     @click.stop="handleClick"
+    @pointerdown="playActive"
+    :class="[buttonClass, { active: isActive }]"
   >
     <Icon v-if="icon" :type="icon" />
     <slot />
@@ -58,5 +59,18 @@ const buttonClass = computed(() => [
 const handleClick = (event: MouseEvent) => {
   ;(document.activeElement as HTMLElement)?.blur()
   emit('click', event)
+}
+
+const isActive = ref(false)
+
+const playActive = () => {
+  isActive.value = false
+  requestAnimationFrame(() => {
+    isActive.value = true
+  })
+
+  setTimeout(() => {
+    isActive.value = false
+  }, 500)
 }
 </script>

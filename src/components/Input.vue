@@ -7,7 +7,7 @@
 <template>
   <label v-if="label" :for="id" class="label">
     {{ label }}
-    <span v-if="required" class="color-danger-900">*</span>
+    <span v-if="required" class="color-danger-900" aria-label="required">*</span>
   </label>
 
   <div class="flex-center gap-8">

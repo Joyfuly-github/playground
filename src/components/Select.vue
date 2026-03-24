@@ -1,12 +1,11 @@
 <template>
   <label v-if="label" :for="id" class="label">
     {{ label }}
-    <span v-if="required" class="color-danger-900">*</span>
+    <span v-if="required" class="color-danger-900" aria-label="required">*</span>
   </label>
 
   <div class="select-group">
     <div
-      ref="refSelect"
       class="select has-suffix"
       :class="selectClass"
       :aria-expanded="isOpen"
@@ -30,7 +29,7 @@
     </div>
 
     <Transition>
-      <div v-if="isOpen" ref="refOptions" class="options" role="listbox" tabindex="-1">
+      <div v-show="isOpen" class="options" role="listbox" tabindex="-1">
         <slot></slot>
       </div>
     </Transition>
@@ -72,18 +71,19 @@ const selectClass = computed(() => [
 ])
 
 const isOpen = ref(false)
-const refSelect = ref<HTMLElement | null>(null)
-const refOptions = ref<HTMLElement | null>(null)
 
-const activeIndex = ref(-1)
-const options = ref<Array<{ value: string | number; label: string; index: number }>>([])
-const registerOption = (option: any) => {
+const focusedIndex = ref(-1)
+const options = ref<Array<{ value: string | number; label: string; disabled: boolean }>>([])
+const registerOption = (option: { value: string | number; label: string; disabled: boolean }) => {
   options.value.push(option)
 }
-// const optionsCount = ref(0)
-// const totalOptions = 3
+
+const unregisterOption = (option: { value: string | number; label: string; disabled: boolean }) => {
+  options.value = options.value.filter((o) => o.value !== option.value)
+}
 
 const handleToggle = () => {
+  if (props.disabled || props.readonly) return
   isOpen.value = !isOpen.value
 }
 
@@ -93,11 +93,22 @@ const handleOpen = () => {
 
 const handleClose = () => {
   isOpen.value = false
-  activeIndex.value = -1
+  focusedIndex.value = -1
 }
 
-const selectOption = (e) => {
-  console.log('selectOption', e)
+const move = (dir: number) => {
+  const len = options.value.length
+  let next = focusedIndex.value
+  let count = 0
+
+  do {
+    next = (next + dir + len) % len
+    count++
+  } while (options.value[next]?.disabled && count < len)
+
+  if (!options.value[next]?.disabled) {
+    focusedIndex.value = next
+  }
 }
 
 const handleKeyDown = (e: KeyboardEvent) => {
@@ -111,15 +122,16 @@ const handleKeyDown = (e: KeyboardEvent) => {
   switch (e.key) {
     case 'ArrowDown':
       e.preventDefault()
-      activeIndex.value = (activeIndex.value + 1) % totalOptions
+      move(1)
       break
     case 'ArrowUp':
       e.preventDefault()
-      activeIndex.value = (activeIndex.value - 1 + totalOptions) % totalOptions
+      move(-1)
       break
     case 'Enter':
       e.preventDefault()
-      selectOption(e)
+      const currentOption = options.value[focusedIndex.value]
+      if (currentOption) selectContext.selectOption(currentOption.value, currentOption.label)
       break
     case 'Escape':
       handleClose()
@@ -132,10 +144,11 @@ const selectContext = reactive({
   selectOption: (value: string | number, label: string) => {
     emit('update:modelValue', { value, label })
     isOpen.value = false
-    activeIndex.value = -1
+    focusedIndex.value = -1
   },
-  activeIndex,
+  focusedIndex,
   registerOption,
+  unregisterOption,
 })
 
 provide('selectContext', selectContext)

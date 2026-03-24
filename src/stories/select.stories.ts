@@ -5,6 +5,7 @@ import Option from '@/components/Option.vue'
 interface SelectOption {
   label: string
   value: string
+  disabled: boolean
 }
 
 const meta: Meta<typeof Select> = {
@@ -41,7 +42,9 @@ type Story = StoryObj<typeof Select>
 
 export const Default: Story = {
   args: {
+    label: 'Select',
     placeholder: '선택하세요',
+    required: true,
   },
   render: (args) => ({
     components: { Select, Option },
@@ -49,9 +52,9 @@ export const Default: Story = {
       const value = ref<SelectOption | null>(null)
 
       const options: SelectOption[] = [
-        { label: '옵션 A', value: 'A' },
-        { label: '옵션 B', value: 'B' },
-        { label: '옵션 C', value: 'C' },
+        { label: '옵션 A', value: 'A', disabled: false },
+        { label: '옵션 B', value: 'B', disabled: true },
+        { label: '옵션 C', value: 'C', disabled: false },
       ]
 
       return { args, value, options }
@@ -62,10 +65,13 @@ export const Default: Story = {
 				v-model="value"
 			>
 				<template v-for="(option, index) in options" :key="option.value">
-					<Option :value="option.value" :label="option.label" :index="index">
-						label: {{ option.label }}
-						option: {{ option.value }}
-						index: {{ index }}
+					<Option :value="option.value" :label="option.label" :index="index" :disabled="option.disabled">
+						<div class="flex gap-8 w-full h-full items-center">
+							<div class="pt-8 pb-8  h-full">
+								<img src="https://placehold.co/600x400" />
+							</div>
+							{{ option.label }}
+						</div>
 					</Option>
 				</template>
 			</Select>
