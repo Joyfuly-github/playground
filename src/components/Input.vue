@@ -118,3 +118,21 @@ const onClear = () => {
   emit('clear')
 }
 </script>
+
+<style lang="scss" scoped>
+.input-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+
+  .input-text {
+    flex: 1;
+  }
+
+  input:focus-within,
+  input:hover {
+    outline: none;
+  }
+}
+</style>

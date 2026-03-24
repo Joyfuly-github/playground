@@ -146,6 +146,7 @@ const selectContext = reactive({
     isOpen.value = false
     focusedIndex.value = -1
   },
+  size: toRef(props, 'size'),
   focusedIndex,
   registerOption,
   unregisterOption,
@@ -153,3 +154,70 @@ const selectContext = reactive({
 
 provide('selectContext', selectContext)
 </script>
+
+<style lang="scss" scoped>
+.select-group {
+  position: relative;
+
+  .select {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+
+    &:not(.disabled, .readonly) {
+      cursor: pointer;
+
+      .input-text {
+        cursor: pointer;
+      }
+    }
+
+    .input-text {
+      flex: 1;
+    }
+
+    input:focus-within,
+    input:hover {
+      outline: none;
+    }
+  }
+
+  .options {
+    padding: var(--spacing-4) 0;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--color-gray);
+    border-radius: var(--radius-small);
+    overflow: hidden;
+    transform: translate(0, calc(100% + 0.4rem));
+    flex-direction: column;
+
+    :deep(.option-item) {
+      padding: 0 var(--spacing-16);
+      border: none;
+      border-radius: 0;
+      font-weight: var(--font-weight-normal);
+      justify-content: space-between;
+
+      &:focus-within,
+      &:hover {
+        box-shadow: none;
+        outline: none;
+      }
+
+      &.is-selected {
+        color: var(--color-primary-900);
+      }
+
+      &.is-focus,
+      &:hover {
+        background-color: var(--color-secondary-100);
+      }
+    }
+  }
+}
+</style>

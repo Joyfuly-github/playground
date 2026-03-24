@@ -70,3 +70,33 @@ const resizeStyle = computed(() => {
   return props.resize
 })
 </script>
+
+<style lang="scss" scoped>
+.textarea-group {
+  .textarea {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    &.size-xs {
+      min-height: var(--spacing-24);
+      padding: var(--spacing-4) var(--spacing-8);
+    }
+
+    &.size-sm {
+      min-height: var(--spacing-32);
+      padding: var(--spacing-8) var(--spacing-16);
+    }
+
+    &.size-md {
+      min-height: var(--spacing-40);
+      padding: var(--spacing-8) var(--spacing-16);
+    }
+
+    &.size-lg {
+      min-height: var(--spacing-56);
+      padding: var(--spacing-16) var(--spacing-24);
+    }
+  }
+}
+</style>

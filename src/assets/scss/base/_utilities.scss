@@ -229,3 +229,75 @@ $flex-wrap: wrap, nowrap, wrap-reverse;
 	justify-content: space-between;
 	align-items: center;
 }
+
+/* =========================
+  size
+========================= */
+$sizes: (
+	xs: (
+		height: var(--spacing-24),
+		padding: 0 var(--spacing-8),
+		font-size: var(--font-size-small),
+		prefix: var(--spacing-4)
+	),
+	sm: (
+		height: var(--spacing-32),
+		padding: 0 var(--spacing-16),
+		font-size: var(--font-size-small),
+		prefix: var(--spacing-8)
+	),
+	md: (
+		height: var(--spacing-40),
+		padding: 0 var(--spacing-16),
+		font-size: var(--font-size-base),
+		prefix: var(--spacing-8)
+	),
+	lg: (
+		height: var(--spacing-56),
+		padding: 0 var(--spacing-24),
+		font-size: var(--font-size-h5),
+		prefix: calc(var(--spacing-24) / 2)
+	)
+);
+
+.size {
+	background-color: var(--color-white);
+	border: 1px solid var(--color-gray);
+	border-radius: var(--radius-small);
+	transition: all ease-in-out 0.4s;
+
+	@each $size, $value in $sizes {
+		&-#{$size} {
+			height: map-get($value, height);
+			padding: map-get($value, padding);
+			font-size: map-get($value, font-size);
+
+			&.btn-icon:not(.btn-link),
+			&.btn-ghost {
+				min-width: map-get($value, height);
+			}
+
+			&.has-prefix {
+				padding-left: map-get($value, prefix);
+
+				.prefix:has(.icon) {
+					margin-right: calc((map-get($value, prefix) / 2) * -1);
+				}
+				.input-text {
+					padding-left: map-get($value, prefix);
+				}
+			}
+
+			&.has-suffix {
+				padding-right: map-get($value, prefix);
+
+				.suffix:has(.icon) {
+					margin-left: calc((map-get($value, prefix) / 2) * -1);
+				}
+				.input-text {
+					padding-right: map-get($value, prefix);
+				}
+			}
+		}
+	}
+}

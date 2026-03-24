@@ -3,6 +3,7 @@
     type="button"
     :disabled="disabled"
     variant="ghost"
+    :size="context?.size"
     class="option-item"
     :class="{ 'is-selected': isSelected, 'is-focus': isFocused }"
     role="option"
@@ -30,6 +31,7 @@ const props = withDefaults(
 const context = inject<{
   selectValue: { value: string | number; label: string } | null
   selectOption: (value: string | number, label: string) => void
+  size: 'xs' | 'sm' | 'md' | 'lg'
   focusedIndex: number
   registerOption: (option: { value: string | number; label: string; disabled: boolean }) => void
   unregisterOption: (option: { value: string | number; label: string; disabled: boolean }) => void
@@ -54,7 +56,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  console.log('onUnmounted')
   context?.unregisterOption(option)
 })
 </script>

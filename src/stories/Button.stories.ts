@@ -12,15 +12,29 @@ const meta: Meta<typeof Button> = {
       control: 'boolean',
     },
     variant: {
-      options: [undefined, 'primary', 'secondary', 'danger', 'ghost'],
+      options: [
+        undefined,
+        'primary',
+        'secondary',
+        'success',
+        'info',
+        'warning',
+        'danger',
+        'ghost',
+        'link',
+      ],
       control: {
         type: 'radio',
         labels: {
           undefined: 'default',
           primary: 'Primary',
           secondary: 'Secondary',
+          success: 'Success',
+          info: 'Info',
+          warning: 'Warning',
           danger: 'Danger',
           ghost: 'Ghost(텍스트 또는 아이콘만 사용)',
+          link: 'Link',
         },
       },
     },
@@ -67,7 +81,7 @@ export const Basic: Story = {
 			<Button>Default</Button>
 			<Button disabled>Default</Button>
 			<Button icon="Search">Default</Button>
-			<Button icon="Search" iconOnly variant="ghost" />
+			<Button icon="Search" iconOnly />
     `,
   }),
 }
@@ -91,6 +105,9 @@ export const Variants: Story = {
 			<Button>Default</Button>
 			<Button variant="primary">Primary</Button>
 			<Button variant="secondary">Secondary</Button>
+			<Button variant="success">Success</Button>
+			<Button variant="info">Info</Button>
+			<Button variant="warning">Warning</Button>
 			<Button variant="danger">Danger</Button>
 			<Button variant="ghost">Ghost</Button>
 			<Button variant="link">link</Button>
