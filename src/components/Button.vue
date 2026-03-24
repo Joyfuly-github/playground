@@ -25,7 +25,7 @@ defineOptions({
 const props = withDefaults(
   defineProps<{
     disabled?: boolean
-    variant?: 'primary' | 'secondary' | 'danger' | 'text'
+    variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'link'
     size?: 'xs' | 'sm' | 'md' | 'lg'
     fullWidth?: boolean
     iconOnly?: boolean

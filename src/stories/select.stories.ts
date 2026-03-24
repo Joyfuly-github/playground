@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Select from '@/components/Select.vue'
+import Option from '@/components/Option.vue'
 
 interface SelectOption {
   label: string
@@ -43,7 +44,7 @@ export const Default: Story = {
     placeholder: '선택하세요',
   },
   render: (args) => ({
-    components: { Select },
+    components: { Select, Option },
     setup() {
       const value = ref<SelectOption | null>(null)
 
@@ -60,7 +61,13 @@ export const Default: Story = {
 				v-bind="args"
 				v-model="value"
 			>
-				{{ options }}
+				<template v-for="(option, index) in options" :key="option.value">
+					<Option :value="option.value" :label="option.label" :index="index">
+						label: {{ option.label }}
+						option: {{ option.value }}
+						index: {{ index }}
+					</Option>
+				</template>
 			</Select>
     `,
   }),

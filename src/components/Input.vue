@@ -17,7 +17,7 @@
           v-if="search"
           :size="size"
           icon="Search"
-          variant="text"
+          variant="link"
           iconOnly
           @click="onSearch"
         />
@@ -39,7 +39,7 @@
       <Button
         v-if="hasValue && !disabled && !readonly"
         icon="X"
-        variant="text"
+        variant="link"
         :size="size"
         iconOnly
         @mousedown.prevent
