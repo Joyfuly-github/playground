@@ -88,7 +88,7 @@ const emit = defineEmits<{
 }>()
 
 const inputClass = computed(() => [
-  `size size-${props.size}`,
+  `size-${props.size}`,
   {
     disabled: props.disabled,
     readonly: props.readonly,

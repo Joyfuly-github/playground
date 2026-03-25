@@ -262,35 +262,39 @@ $sizes: (
 		prefix: calc(var(--spacing-24) / 2)
 	)
 );
+@each $size, $value in $sizes {
+	.size-#{$size} {
+		height: map-get($value, height);
+		padding: map-get($value, padding);
+		padding-right: map-get($value, prefix);
+		background-color: var(--color-white);
+		border: 1px solid var(--color-gray);
+		border-radius: var(--radius-small);
+		font-size: map-get($value, font-size);
+		transition: all ease-in-out 0.4s;
 
-.size {
-	background-color: var(--color-white);
-	border: 1px solid var(--color-gray);
-	border-radius: var(--radius-small);
-	transition: all ease-in-out 0.4s;
+		&.btn-icon:not(.btn-link) {
+			min-width: map-get($value, height);
+			padding: 0;
+		}
 
+		&:has(.prefix) {
+			padding-left: map-get($value, prefix);
+			.input-text {
+				padding-left: map-get($value, prefix);
+			}
+		}
+
+		.input-text {
+			padding-right: map-get($value, prefix);
+		}
+	}
+}
+
+.text {
 	@each $size, $value in $sizes {
 		&-#{$size} {
-			height: map-get($value, height);
-			padding: map-get($value, padding);
-			padding-right: map-get($value, prefix);
 			font-size: map-get($value, font-size);
-
-			&.btn-icon:not(.btn-link) {
-				min-width: map-get($value, height);
-				padding: 0;
-			}
-
-			&:has(.prefix) {
-				padding-left: map-get($value, prefix);
-				.input-text {
-					padding-left: map-get($value, prefix);
-				}
-			}
-
-			.input-text {
-				padding-right: map-get($value, prefix);
-			}
 		}
 	}
 }

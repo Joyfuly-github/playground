@@ -44,12 +44,12 @@ const emit = defineEmits<{
 const attrs = useAttrs()
 
 const buttonClass = computed(() => [
-  `size size-${props.size}`,
+  `size-${props.size}`,
   props.variant && `btn-${props.variant}`,
+  props.iconOnly && 'btn-icon',
   {
     'w-full': props.fullWidth,
     disabled: props.disabled,
-    'btn-icon': props.iconOnly,
   },
 ])
 

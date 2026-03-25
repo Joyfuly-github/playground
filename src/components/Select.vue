@@ -63,7 +63,7 @@ const props = withDefaults(
 const emit = defineEmits(['update:modelValue'])
 
 const selectClass = computed(() => [
-  `size size-${props.size}`,
+  `size-${props.size}`,
   {
     disabled: props.disabled,
     readonly: props.readonly,

@@ -51,7 +51,7 @@ const emit = defineEmits<{
 }>()
 
 const textareaClass = computed(() => [
-  `size size-${props.size}`,
+  `size-${props.size}`,
   {
     disabled: props.disabled,
     readonly: props.readonly,
