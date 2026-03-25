@@ -6,7 +6,7 @@ $color: (
 	white: var(--color-white),
 	gray: var(--color-gray),
 	disabled-bg: var(--color-disabled-bg),
-	disabled-color: var(--color-disabled-color),
+	disabled-color: var(--color-disabled-font),
 	primary-100: var(--color-primary-100),
 	primary-500: var(--color-primary-500),
 	primary-900: var(--color-primary-900),
@@ -266,7 +266,6 @@ $sizes: (
 	.size-#{$size} {
 		height: map-get($value, height);
 		padding: map-get($value, padding);
-		padding-right: map-get($value, prefix);
 		background-color: var(--color-white);
 		border: 1px solid var(--color-gray);
 		border-radius: var(--radius-small);
@@ -282,6 +281,28 @@ $sizes: (
 			padding-left: map-get($value, prefix);
 			.input-text {
 				padding-left: map-get($value, prefix);
+			}
+		}
+
+		&.disabled {
+			background-color: var(--color-disabled-bg);
+			color: var(--color-disabled-font);
+			cursor: default;
+		}
+
+		&.readonly {
+			background-color: var(--color-disabled-bg);
+			cursor: default;
+		}
+
+		&:focus-within,
+		&:hover {
+			&:not(.disabled, .readonly, .btn-ghost, .btn-link) {
+				border-color: var(--color-gray);
+				outline: none;
+				box-shadow:
+					var(--color-white) 0px 0px 0px 1px,
+					var(--color-black) 0px 0px 0px 2px;
 			}
 		}
 

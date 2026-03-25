@@ -78,29 +78,3 @@ img {
 	max-width: 100%;
 	max-height: 100%;
 }
-
-/* size */
-.size {
-	&.disabled {
-		background-color: var(--color-disabled-bg);
-		color: var(--color-disabled-color);
-		cursor: default;
-	}
-
-	&.readonly {
-		background-color: var(--color-disabled-bg);
-		cursor: default;
-	}
-
-	&:focus-within,
-	&:hover {
-		&:not(.disabled, .readonly, .btn-ghost, .btn-link) {
-			border-color: var(--color-gray);
-			outline: none;
-			box-shadow:
-				var(--color-white) 0px 0px 0px 1px,
-				var(--color-black) 0px 0px 0px 2px;
-			transition: all ease-in-out 0.4s;
-		}
-	}
-}

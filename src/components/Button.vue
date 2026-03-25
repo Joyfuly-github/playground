@@ -120,7 +120,7 @@ $colorType: 'primary', 'secondary', 'success', 'info', 'warning', 'danger';
       text-decoration: underline;
 
       &.btn-icon {
-        color: var(--color-primary-900);
+        color: var(--color-disabled-font);
       }
     }
   }
@@ -130,7 +130,7 @@ $colorType: 'primary', 'secondary', 'success', 'info', 'warning', 'danger';
   }
 
   &:not(.btn-icon) .icon {
-    margin-left: calc(var(--spacing-4) * -1);
+    transform: translateX(calc(var(--spacing-4) * -1));
   }
 
   &.active:not(.disabled, .readonly) {

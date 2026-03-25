@@ -4,7 +4,7 @@
     <span v-if="required" class="color-danger-900" aria-label="required">*</span>
   </label>
 
-  <div class="select-group">
+  <div class="select-group" ref="refGroup">
     <div
       class="select"
       :class="selectClass"
@@ -29,7 +29,7 @@
     </div>
 
     <Transition>
-      <div v-show="isOpen" class="options" role="listbox" tabindex="-1">
+      <div v-show="isOpen" class="options" role="listbox" tabindex="-1" @click.stop>
         <slot></slot>
       </div>
     </Transition>
@@ -62,6 +62,8 @@ const props = withDefaults(
 
 const emit = defineEmits(['update:modelValue'])
 
+const refGroup = ref<HTMLElement | null>(null)
+
 const selectClass = computed(() => [
   `size-${props.size}`,
   {
@@ -83,11 +85,12 @@ const unregisterOption = (option: { value: string | number; label: string; disab
 }
 
 const handleToggle = () => {
-  if (props.disabled || props.readonly) return
-  isOpen.value = !isOpen.value
+  if (isOpen.value) handleClose()
+  else handleOpen()
 }
 
 const handleOpen = () => {
+  if (props.disabled || props.readonly) return
   isOpen.value = true
 }
 
@@ -153,6 +156,18 @@ const selectContext = reactive({
 })
 
 provide('selectContext', selectContext)
+
+const handleOutside = (e: MouseEvent) => {
+  if (refGroup.value && !refGroup.value.contains(e.target as Node)) handleClose()
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleOutside)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -217,6 +232,15 @@ provide('selectContext', selectContext)
       &:hover {
         background-color: var(--color-secondary-100);
       }
+    }
+  }
+
+  :deep(.icon) {
+    transform: rotate(0);
+    transition: all ease-in-out 0.4s;
+
+    &.is-open {
+      transform: rotate(180deg);
     }
   }
 }
