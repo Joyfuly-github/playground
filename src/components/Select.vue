@@ -6,7 +6,7 @@
 
   <div class="select-group">
     <div
-      class="select has-suffix"
+      class="select"
       :class="selectClass"
       :aria-expanded="isOpen"
       aria-haspopup="listbox"

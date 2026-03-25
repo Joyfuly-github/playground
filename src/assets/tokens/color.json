@@ -12,12 +12,12 @@
       "value": "#cccccc",
       "type": "color"
     },
-    "bg": {
-      "value": "#f9f9F9",
+    "disabled-bg": {
+      "value": "#e5e5e5",
       "type": "color"
     },
-    "disabled": {
-      "value": "#999999",
+    "disabled-color": {
+      "value": "#262626",
       "type": "color"
     },
     "primary": {

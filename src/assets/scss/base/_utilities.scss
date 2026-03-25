@@ -4,6 +4,9 @@
 $color: (
 	black: var(--color-black),
 	white: var(--color-white),
+	gray: var(--color-gray),
+	disabled-bg: var(--color-disabled-bg),
+	disabled-color: var(--color-disabled-color),
 	primary-100: var(--color-primary-100),
 	primary-500: var(--color-primary-500),
 	primary-900: var(--color-primary-900),
@@ -270,33 +273,23 @@ $sizes: (
 		&-#{$size} {
 			height: map-get($value, height);
 			padding: map-get($value, padding);
+			padding-right: map-get($value, prefix);
 			font-size: map-get($value, font-size);
 
-			&.btn-icon:not(.btn-link),
-			&.btn-ghost {
+			&.btn-icon:not(.btn-link) {
 				min-width: map-get($value, height);
+				padding: 0;
 			}
 
-			&.has-prefix {
+			&:has(.prefix) {
 				padding-left: map-get($value, prefix);
-
-				.prefix:has(.icon) {
-					margin-right: calc((map-get($value, prefix) / 2) * -1);
-				}
 				.input-text {
 					padding-left: map-get($value, prefix);
 				}
 			}
 
-			&.has-suffix {
+			.input-text {
 				padding-right: map-get($value, prefix);
-
-				.suffix:has(.icon) {
-					margin-left: calc((map-get($value, prefix) / 2) * -1);
-				}
-				.input-text {
-					padding-right: map-get($value, prefix);
-				}
 			}
 		}
 	}

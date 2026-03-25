@@ -125,6 +125,14 @@ $colorType: 'primary', 'secondary', 'success', 'info', 'warning', 'danger';
     }
   }
 
+  &.btn-icon {
+    padding: var(--spacing-4);
+  }
+
+  &:not(.btn-icon) .icon {
+    margin-left: calc(var(--spacing-4) * -1);
+  }
+
   &.active:not(.disabled, .readonly) {
     animation: buttonAni 0.3s ease-in;
   }

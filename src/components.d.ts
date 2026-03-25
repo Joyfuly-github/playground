@@ -12,6 +12,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./components/Button.vue')['default']
+    Checkbox: typeof import('./components/Checkbox.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Icon: typeof import('./components/Icon.vue')['default']
     IconCommunity: typeof import('./components/icons/IconCommunity.vue')['default']

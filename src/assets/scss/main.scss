@@ -82,13 +82,13 @@ img {
 /* size */
 .size {
 	&.disabled {
-		background-color: var(--color-bg);
-		color: var(--color-disabled);
+		background-color: var(--color-disabled-bg);
+		color: var(--color-disabled-color);
 		cursor: default;
 	}
 
 	&.readonly {
-		background-color: var(--color-bg);
+		background-color: var(--color-disabled-bg);
 		cursor: default;
 	}
 

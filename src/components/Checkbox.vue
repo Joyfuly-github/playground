@@ -1,9 +1,3 @@
-<!-- 
-	maxlength
-	error message
-	search enter event 
-	input type="number"
--->
 <template>
   <label v-if="label" :for="id" class="label">
     {{ label }}
@@ -37,7 +31,7 @@
       />
 
       <Button
-        v-show="hasValue && !disabled && !readonly"
+        v-if="hasValue && !disabled && !readonly"
         icon="X"
         variant="link"
         :size="size"
@@ -87,11 +81,16 @@ const emit = defineEmits<{
   (e: 'clear'): void
 }>()
 
+const slots = useSlots()
+const hasPrefix = computed(() => !!slots.prefix)
+const hasSuffix = computed(() => !!slots.suffix)
 const inputClass = computed(() => [
   `size size-${props.size}`,
   {
     disabled: props.disabled,
     readonly: props.readonly,
+    'has-prefix': hasPrefix.value || props.search,
+    'has-suffix': hasSuffix.value,
   },
 ])
 
@@ -115,19 +114,19 @@ const onClear = () => {
 </script>
 
 <style lang="scss" scoped>
-.input-group {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-4);
+// .input-group {
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   gap: var(--spacing-4);
 
-  .input-text {
-    flex: 1;
-  }
+//   .input-text {
+//     flex: 1;
+//   }
 
-  input:focus-within,
-  input:hover {
-    outline: none;
-  }
-}
+//   input:focus-within,
+//   input:hover {
+//     outline: none;
+//   }
+// }
 </style>

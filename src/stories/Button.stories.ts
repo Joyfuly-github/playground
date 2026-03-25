@@ -114,3 +114,17 @@ export const Variants: Story = {
     `,
   }),
 }
+
+export const WithIcons: Story = {
+  render: () => ({
+    components: { Button },
+    template: `
+			<Button icon="Search">Default</Button>
+			<Button icon="Search" iconOnly />
+			<Button variant="ghost" icon="Search">Ghost</Button>
+			<Button variant="link" icon="Search">link</Button>
+			<Button variant="ghost" icon="Search" iconOnly />
+			<Button variant="link" icon="Search" iconOnly />
+    `,
+  }),
+}

@@ -4,7 +4,7 @@
     <span v-if="required" class="color-danger-900" aria-label="required">*</span>
   </label>
 
-  <div class="textarea-group">
+  <div class="textarea">
     <textarea
       v-model="inputValue"
       :placeholder="placeholder"
@@ -13,7 +13,6 @@
       :disabled="disabled"
       :readonly="readonly"
       :rows="rows"
-      class="textarea"
       :class="textareaClass"
       :style="{
         resize: resizeStyle,
@@ -72,8 +71,8 @@ const resizeStyle = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.textarea-group {
-  .textarea {
+.textarea {
+  textarea {
     width: 100%;
     max-width: 100%;
     height: auto;

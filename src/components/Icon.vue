@@ -21,7 +21,6 @@ const icon = computed<Component>(() => icons[props.type] as Component)
 
 <style lang="scss" scoped>
 .icon {
-  padding: var(--spacing-4);
   display: inline-flex;
   justify-content: center;
   align-items: center;
