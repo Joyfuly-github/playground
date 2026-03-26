@@ -1,6 +1,7 @@
 <template>
   <button
     v-bind="attrs"
+    :type="type"
     :disabled="disabled"
     class="btn"
     @click.stop="handleClick"
@@ -22,6 +23,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<{
+    type?: 'button' | 'submit' | 'reset'
     disabled?: boolean
     variant?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'ghost' | 'link'
     size?: 'xs' | 'sm' | 'md' | 'lg'
@@ -30,6 +32,7 @@ const props = withDefaults(
     icon?: keyof typeof icons
   }>(),
   {
+    type: 'button',
     disabled: false,
     size: 'md',
     fullWidth: false,

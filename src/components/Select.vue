@@ -1,3 +1,7 @@
+<!-- 
+1. Search
+2. Select Slot 
+-->
 <template>
   <label v-if="label" :for="id" class="label">
     {{ label }}
@@ -11,16 +15,17 @@
       :aria-expanded="isOpen"
       aria-haspopup="listbox"
       @click.stop="handleToggle"
-      @keydown="handleKeyDown"
     >
       <input
         type="text"
+        class="input-text"
+        ref="refInput"
         :placeholder="placeholder"
         :id="id"
         :name="name"
-        readonly
-        class="input-text"
-        :value="modelValue?.label"
+        :readonly="!search"
+        :value="selectedOption?.label"
+        @keydown="handleKeyDown"
       />
 
       <div class="suffix">
@@ -39,16 +44,14 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    modelValue: {
-      value: string | number
-      label: string
-    } | null
+    modelValue: string | number | null
     id?: string
     name?: string
     placeholder?: string
     disabled?: boolean
     readonly?: boolean
     required?: boolean
+    search?: boolean
     size?: 'xs' | 'sm' | 'md' | 'lg'
     label?: string
   }>(),
@@ -56,13 +59,21 @@ const props = withDefaults(
     disabled: false,
     readonly: false,
     required: false,
+    search: false,
     size: 'md',
   },
 )
 
 const emit = defineEmits(['update:modelValue'])
 
+interface Option {
+  value: string | number
+  label: string
+  disabled: boolean
+}
+
 const refGroup = ref<HTMLElement | null>(null)
+const refInput = ref<HTMLElement | null>(null)
 
 const selectClass = computed(() => [
   `size-${props.size}`,
@@ -75,14 +86,16 @@ const selectClass = computed(() => [
 const isOpen = ref(false)
 
 const focusedIndex = ref(-1)
-const options = ref<Array<{ value: string | number; label: string; disabled: boolean }>>([])
-const registerOption = (option: { value: string | number; label: string; disabled: boolean }) => {
+const options = ref<Option[]>([])
+const registerOption = (option: Option) => {
   options.value.push(option)
 }
 
-const unregisterOption = (option: { value: string | number; label: string; disabled: boolean }) => {
+const unregisterOption = (option: Option) => {
   options.value = options.value.filter((o) => o.value !== option.value)
 }
+
+const selectedOption = computed(() => options.value.find((o) => o.value === props.modelValue))
 
 const handleToggle = () => {
   if (isOpen.value) handleClose()
@@ -91,6 +104,7 @@ const handleToggle = () => {
 
 const handleOpen = () => {
   if (props.disabled || props.readonly) return
+  if (props.search) refInput.value?.focus()
   isOpen.value = true
 }
 
@@ -134,7 +148,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
     case 'Enter':
       e.preventDefault()
       const currentOption = options.value[focusedIndex.value]
-      if (currentOption) selectContext.selectOption(currentOption.value, currentOption.label)
+      if (currentOption) selectContext.selectOption(currentOption.value)
       break
     case 'Escape':
       handleClose()
@@ -144,8 +158,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
 const selectContext = reactive({
   selectValue: toRef(props, 'modelValue'),
-  selectOption: (value: string | number, label: string) => {
-    emit('update:modelValue', { value, label })
+  selectOption: (value: string | number) => {
+    emit('update:modelValue', value)
     isOpen.value = false
     focusedIndex.value = -1
   },
@@ -153,6 +167,7 @@ const selectContext = reactive({
   focusedIndex,
   registerOption,
   unregisterOption,
+  options,
 })
 
 provide('selectContext', selectContext)

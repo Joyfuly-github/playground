@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Select from '@/components/Select.vue'
 import Option from '@/components/Option.vue'
-import Button from '@/components/Button.vue'
 
 interface SelectOption {
   label: string
@@ -48,7 +47,7 @@ export const Default: Story = {
     required: true,
   },
   render: (args) => ({
-    components: { Select, Option, Button },
+    components: { Select, Option },
     setup() {
       const value = ref<SelectOption | null>(null)
 
@@ -65,8 +64,8 @@ export const Default: Story = {
 				v-bind="args"
 				v-model="value"
 			>
-				<template v-for="(option, index) in options" :key="option.value">
-					<Option :value="option.value" :label="option.label" :index="index" :disabled="option.disabled">
+				<template v-for="option in options" :key="option.value">
+					<Option :value="option.value" :label="option.label" :disabled="option.disabled">
 						<div class="flex gap-8 w-full h-full items-center">
 							<div class="pt-8 pb-8  h-full">
 								<img src="https://placehold.co/600x400" />
@@ -76,12 +75,46 @@ export const Default: Story = {
 					</Option>
 				</template>
 			</Select>
+    `,
+  }),
+}
 
-			<Button>Default</Button>
+export const Search: Story = {
+  args: {
+    label: 'Select',
+    placeholder: '선택하세요',
+    required: true,
+    search: true,
+  },
+  render: (args) => ({
+    components: { Select, Option },
+    setup() {
+      const value = ref<SelectOption | null>(null)
 
-			<Button>Default</Button>
+      const options: SelectOption[] = [
+        { label: '옵션 A', value: 'A', disabled: false },
+        { label: '옵션 B', value: 'B', disabled: true },
+        { label: '옵션 C', value: 'C', disabled: false },
+      ]
 
-			<Button>Default</Button>
+      return { args, value, options }
+    },
+    template: `
+			<Select
+				v-bind="args"
+				v-model="value"
+			>
+				<template v-for="option in options" :key="option.value">
+					<Option :value="option.value" :label="option.label" :disabled="option.disabled">
+						<div class="flex gap-8 w-full h-full items-center">
+							<div class="pt-8 pb-8  h-full">
+								<img src="https://placehold.co/600x400" />
+							</div>
+							{{ option.label }}
+						</div>
+					</Option>
+				</template>
+			</Select>
     `,
   }),
 }

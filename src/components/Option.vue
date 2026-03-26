@@ -20,7 +20,6 @@ const props = withDefaults(
   defineProps<{
     value: string | number
     label: string
-    index: number
     disabled?: boolean
   }>(),
   {
@@ -28,28 +27,39 @@ const props = withDefaults(
   },
 )
 
+interface Option {
+  value: string | number
+  label: string
+  disabled: boolean
+}
+
 const context = inject<{
-  selectValue: { value: string | number; label: string } | null
-  selectOption: (value: string | number, label: string) => void
+  selectValue: string | number
+  selectOption: (value: string | number) => void
   size: 'xs' | 'sm' | 'md' | 'lg'
   focusedIndex: number
-  registerOption: (option: { value: string | number; label: string; disabled: boolean }) => void
-  unregisterOption: (option: { value: string | number; label: string; disabled: boolean }) => void
+  registerOption: (option: Option) => void
+  unregisterOption: (option: Option) => void
+  options: Option[]
 }>('selectContext')
 
-const isSelected = computed(() => context?.selectValue?.value === props.value)
-const isFocused = computed(() => context?.focusedIndex === props.index)
+const index = computed(() => {
+  return context?.options.findIndex((o) => o.value === props.value) ?? -1
+})
+
+const isSelected = computed(() => context?.selectValue === props.value)
+const isFocused = computed(() => context?.focusedIndex === index.value)
 
 const handleClick = () => {
   if (props.disabled) return
-  context?.selectOption(props.value, props.label)
+  context?.selectOption(props.value)
 }
 
-const option = {
+const option = reactive({
   value: props.value,
-  label: props.label,
   disabled: props.disabled,
-}
+  label: props.label ?? String(props.value),
+})
 
 onMounted(() => {
   context?.registerOption(option)

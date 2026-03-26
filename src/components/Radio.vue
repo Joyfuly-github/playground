@@ -1,19 +1,17 @@
 `
 <template>
-  <label class="input-checkbox" :class="checkboxClass">
+  <label class="input-radio" :class="radioClass">
     <input
-      type="checkbox"
-      v-model="checkValue"
+      type="radio"
+      v-model="radioValue"
       :id="id"
       :name="name"
       :disabled="disabled"
       @click.stop="readonly && $event.preventDefault()"
     />
-    <span class="checkbox">
-      <Icon type="Check" />
-    </span>
+    <span class="radio"></span>
 
-    <div class="inner-check">
+    <div class="inner-radio">
       <span v-if="label">{{ label }}</span>
       <slot></slot>
     </div>
@@ -24,6 +22,7 @@
 const props = withDefaults(
   defineProps<{
     modelValue: boolean
+    value: string | number
     id?: string
     name?: string
     disabled?: boolean
@@ -42,7 +41,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
 }>()
 
-const checkValue = computed({
+const radioValue = computed({
   get: () => props.modelValue,
   set: (val: boolean) => {
     if (props.readonly) {
@@ -54,7 +53,7 @@ const checkValue = computed({
   },
 })
 
-const checkboxClass = computed(() => [
+const radioClass = computed(() => [
   `text-${props.size}`,
   {
     disabled: props.disabled,
@@ -64,7 +63,7 @@ const checkboxClass = computed(() => [
 </script>
 
 <style lang="scss" scoped>
-.input-checkbox {
+.input-radio {
   max-width: 100%;
   line-height: var(--lh-tight);
   display: inline-flex;
@@ -74,7 +73,7 @@ const checkboxClass = computed(() => [
   align-items: flex-start;
   gap: var(--spacing-8);
 
-  input[type='checkbox'] {
+  input[type='radio'] {
     width: 0;
     height: 0;
     position: absolute;
@@ -84,7 +83,7 @@ const checkboxClass = computed(() => [
     pointer-events: none;
   }
 
-  .checkbox {
+  .radio {
     width: 1.2em;
     height: 1.2em;
     display: flex;
@@ -105,11 +104,11 @@ const checkboxClass = computed(() => [
     }
   }
 
-  .inner-check {
+  .inner-radio {
     flex: 1;
   }
 
-  input[type='checkbox']:checked ~ .checkbox {
+  input[type='radio']:checked ~ .radio {
     :deep(.icon) {
       transform: scale(1);
     }
@@ -118,14 +117,14 @@ const checkboxClass = computed(() => [
   &:not(.disabled, .readonly) {
     &:focus-within,
     &:hover {
-      .checkbox {
+      .radio {
         box-shadow:
           var(--color-white) 0px 0px 0px 1px,
           var(--color-black) 0px 0px 0px 2px;
       }
     }
 
-    input[type='checkbox']:checked ~ .checkbox {
+    input[type='radio']:checked ~ .radio {
       background-color: var(--color-secondary-900);
       border-color: var(--color-secondary-900);
     }
@@ -135,17 +134,17 @@ const checkboxClass = computed(() => [
   &.readonly {
     cursor: default;
 
-    .checkbox {
+    .radio {
       background-color: var(--color-disabled-bg);
       border-color: var(--color-disabled-bg);
     }
   }
 
-  &.disabled .checkbox {
+  &.disabled .radio {
     color: var(--color-disabled-font);
   }
 
-  &.readonly .checkbox {
+  &.readonly .radio {
     color: var(--color-black);
   }
 }

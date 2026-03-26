@@ -23,6 +23,7 @@ declare module 'vue' {
     Input: typeof import('./components/Input.vue')['default']
     Option: typeof import('./components/Option.vue')['default']
     Options: typeof import('./components/Options.vue')['default']
+    Radio: typeof import('./components/Radio.vue')['default']
     Select: typeof import('./components/Select.vue')['default']
     Textarea: typeof import('./components/Textarea.vue')['default']
     TheWelcome: typeof import('./components/TheWelcome.vue')['default']
