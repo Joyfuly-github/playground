@@ -157,16 +157,19 @@ const selectContext = reactive({
 
 provide('selectContext', selectContext)
 
-const handleOutside = (e: MouseEvent) => {
-  if (refGroup.value && !refGroup.value.contains(e.target as Node)) handleClose()
+const handleOutside = (e: Event) => {
+  const target = e.target as Node
+  if (refGroup.value && !refGroup.value.contains(target)) handleClose()
 }
 
 onMounted(() => {
   document.addEventListener('click', handleOutside)
+  document.addEventListener('focusin', handleOutside)
 })
 
 onUnmounted(() => {
   document.removeEventListener('click', handleOutside)
+  document.removeEventListener('focusin', handleOutside)
 })
 </script>
 

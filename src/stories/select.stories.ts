@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Select from '@/components/Select.vue'
 import Option from '@/components/Option.vue'
+import Button from '@/components/Button.vue'
 
 interface SelectOption {
   label: string
@@ -47,7 +48,7 @@ export const Default: Story = {
     required: true,
   },
   render: (args) => ({
-    components: { Select, Option },
+    components: { Select, Option, Button },
     setup() {
       const value = ref<SelectOption | null>(null)
 
@@ -75,6 +76,12 @@ export const Default: Story = {
 					</Option>
 				</template>
 			</Select>
+
+			<Button>Default</Button>
+
+			<Button>Default</Button>
+
+			<Button>Default</Button>
     `,
   }),
 }
