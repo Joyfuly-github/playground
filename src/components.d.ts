@@ -13,6 +13,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('./components/Button.vue')['default']
     Checkbox: typeof import('./components/Checkbox.vue')['default']
+    Field: typeof import('./components/Field.vue')['default']
+    FieldGroup: typeof import('./components/FieldGroup.vue')['default']
+    Fieldset: typeof import('./components/Fieldset.vue')['default']
+    Form: typeof import('./components/Form.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Icon: typeof import('./components/Icon.vue')['default']
     IconCommunity: typeof import('./components/icons/IconCommunity.vue')['default']
@@ -27,6 +31,7 @@ declare module 'vue' {
     Select: typeof import('./components/Select.vue')['default']
     Textarea: typeof import('./components/Textarea.vue')['default']
     TheWelcome: typeof import('./components/TheWelcome.vue')['default']
+    Title: typeof import('./components/Title.vue')['default']
     WelcomeItem: typeof import('./components/WelcomeItem.vue')['default']
   }
 }

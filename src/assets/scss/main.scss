@@ -28,35 +28,35 @@ body {
 
 // title
 h1,
-.h1 {
+.font-h1 {
 	margin-bottom: var(--spacing-40);
 	font-size: var(--font-size-h1);
 	font-weight: var(--font-weight-bold);
 }
 
 h2,
-.h2 {
+.font-h2 {
 	margin-bottom: var(--spacing-32);
 	font-size: var(--font-size-h2);
 	font-weight: var(--font-weight-bold);
 }
 
 h3,
-.h3 {
+.font-h3 {
 	margin-bottom: var(--spacing-16);
 	font-size: var(--font-size-h3);
 	font-weight: var(--font-weight-bold);
 }
 
 h4,
-.h4 {
+.font-h4 {
 	margin-bottom: var(--spacing-16);
 	font-size: var(--font-size-h4);
 	font-weight: var(--font-weight-bold);
 }
 
 h5,
-.h5 {
+.font-h5 {
 	margin-bottom: var(--spacing-16);
 	font-size: var(--font-size-h5);
 	font-weight: var(--font-weight-bold);

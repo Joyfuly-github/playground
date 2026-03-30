@@ -277,6 +277,10 @@ $sizes: (
 			padding: 0;
 		}
 
+		&:not(.btn) {
+			padding-right: map-get($value, prefix);
+		}
+
 		&:has(.prefix) {
 			padding-left: map-get($value, prefix);
 			.input-text {

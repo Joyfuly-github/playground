@@ -72,7 +72,7 @@ const checkboxClass = computed(() => [
   word-break: keep-all;
   overflow-wrap: break-word;
   align-items: flex-start;
-  gap: var(--spacing-8);
+  gap: 0.5em;
 
   input[type='checkbox'] {
     width: 0;
@@ -89,7 +89,7 @@ const checkboxClass = computed(() => [
     height: 1.2em;
     display: flex;
     position: relative;
-    top: 0.1rem;
+    top: 0.1em;
     border: 1px solid var(--color-gray);
     border-radius: var(--radius-small);
     justify-content: center;

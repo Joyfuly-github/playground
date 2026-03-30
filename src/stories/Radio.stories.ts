@@ -41,13 +41,7 @@ export const Default: Story = {
       return { args, value }
     },
     template: `
-      <Radio v-model="value" name="fruit" value="apple">
-				사과
-			</Radio>
-
-			<Radio v-model="value" name="fruit" value="banana">
-				바나나
-			</Radio>
+      <Radio v-model="value" v-bind="args" />	
     `,
   }),
 }

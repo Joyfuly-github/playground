@@ -254,6 +254,7 @@ onUnmounted(() => {
   }
 
   :deep(.icon) {
+    padding: var(--spacing-4);
     transform: rotate(0);
     transition: all ease-in-out 0.4s;
 

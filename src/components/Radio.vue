@@ -71,7 +71,7 @@ const radioClass = computed(() => [
   word-break: keep-all;
   overflow-wrap: break-word;
   align-items: flex-start;
-  gap: var(--spacing-8);
+  gap: 0.5em;
 
   input[type='radio'] {
     width: 0;
@@ -88,17 +88,21 @@ const radioClass = computed(() => [
     height: 1.2em;
     display: flex;
     position: relative;
-    top: 0.1rem;
+    top: 0.1em;
     border: 1px solid var(--color-gray);
-    border-radius: var(--radius-small);
+    border-radius: var(--radius-full);
     justify-content: center;
     align-items: center;
     color: var(--color-white);
     transition: all ease-in-out 0.4s;
 
-    :deep(.icon) {
-      width: 1em;
-      height: 1em;
+    &:after {
+      content: '';
+      width: calc(100% - 0.6em);
+      height: calc(100% - 0.6em);
+      display: inline-block;
+      background-color: var(--color-white);
+      border-radius: var(--radius-full);
       transform: scale(0);
       transition: all cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.2s 0.2s;
     }
@@ -109,7 +113,7 @@ const radioClass = computed(() => [
   }
 
   input[type='radio']:checked ~ .radio {
-    :deep(.icon) {
+    &:after {
       transform: scale(1);
     }
   }

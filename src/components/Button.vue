@@ -87,9 +87,13 @@ $colorType: 'primary', 'secondary', 'success', 'info', 'warning', 'danger';
 
   @each $type in $colorType {
     &.btn-#{$type} {
-      background-color: var(--color-#{$type}-100);
+      // background-color: var(--color-#{$type}-100);
+      // border-color: var(--color-#{$type}-900);
+      // color: var(--color-#{$type}-900);
+
+      background-color: var(--color-#{$type}-900);
       border-color: var(--color-#{$type}-900);
-      color: var(--color-#{$type}-900);
+      color: var(--color-white);
 
       &:focus-within,
       &:hover {
