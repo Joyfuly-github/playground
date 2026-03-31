@@ -20,7 +20,7 @@ defineEmits<{
     margin-top: var(--spacing-24);
     display: flex;
     gap: var(--spacing-8);
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
   }
 }

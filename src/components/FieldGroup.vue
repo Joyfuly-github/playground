@@ -24,8 +24,18 @@ withDefaults(
     flex-direction: column;
   }
 
+  &:has(.input-checkbox),
+  &:has(.input-radio) {
+    column-gap: var(--spacing-16);
+  }
+
   > * {
-    flex: 1;
+    flex: auto;
+  }
+
+  :deep(.input-checkbox),
+  :deep(.input-radio) {
+    flex: none;
   }
 }
 </style>

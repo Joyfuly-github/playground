@@ -277,7 +277,7 @@ $sizes: (
 			padding: 0;
 		}
 
-		&:not(.btn) {
+		&:not(.btn, .badge) {
 			padding-right: map-get($value, prefix);
 		}
 
@@ -286,6 +286,10 @@ $sizes: (
 			.input-text {
 				padding-left: map-get($value, prefix);
 			}
+		}
+
+		&.badge {
+			border-radius: calc(map-get($value, height) / 2);
 		}
 
 		&.disabled {
@@ -301,7 +305,7 @@ $sizes: (
 
 		&:focus-within,
 		&:hover {
-			&:not(.disabled, .readonly, .btn-ghost, .btn-link) {
+			&:not(.disabled, .readonly, .btn-ghost, .btn-link, .badge) {
 				border-color: var(--color-gray);
 				outline: none;
 				box-shadow:
