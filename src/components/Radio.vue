@@ -1,14 +1,11 @@
-`
+<!-- 
+check 된 값
+boolean에서 value로 바꿔야할듯
+-->
 <template>
   <label class="input-radio" :class="radioClass">
-    <input
-      type="radio"
-      v-model="radioValue"
-      :id="id"
-      :name="name"
-      :disabled="disabled"
-      @click.stop="readonly && $event.preventDefault()"
-    />
+    <input type="radio" v-model="radioValue" :id="id" :name="name" :disabled="disabled" />
+    <!-- @click.stop="readonly && $event.preventDefault()" -->
     <span class="radio"></span>
 
     <div class="inner-radio">
@@ -48,7 +45,8 @@ const radioValue = computed({
       console.log(props.readonly)
       return false
     }
-    console.log('오지뫗')
+    console.log(props.modelValue)
+
     emit('update:modelValue', val)
   },
 })
@@ -73,15 +71,15 @@ const radioClass = computed(() => [
   align-items: flex-start;
   gap: 0.5em;
 
-  input[type='radio'] {
-    width: 0;
-    height: 0;
-    position: absolute;
-    opacity: 0;
-    appearance: none;
-    -webkit-appearance: none;
-    pointer-events: none;
-  }
+  // input[type='radio'] {
+  //   width: 0;
+  //   height: 0;
+  //   position: absolute;
+  //   opacity: 0;
+  //   appearance: none;
+  //   -webkit-appearance: none;
+  //   pointer-events: none;
+  // }
 
   .radio {
     width: 1.2em;

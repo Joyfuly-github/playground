@@ -14,6 +14,7 @@ declare module 'vue' {
     Badge: typeof import('./components/Badge.vue')['default']
     Button: typeof import('./components/Button.vue')['default']
     Checkbox: typeof import('./components/Checkbox.vue')['default']
+    Dialog: typeof import('./components/Dialog.vue')['default']
     Field: typeof import('./components/Field.vue')['default']
     FieldGroup: typeof import('./components/FieldGroup.vue')['default']
     Fieldset: typeof import('./components/Fieldset.vue')['default']

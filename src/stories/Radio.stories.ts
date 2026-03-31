@@ -56,10 +56,10 @@ export const RadioGroup: Story = {
     components: { Radio, Fieldset, FieldGroup },
 
     setup() {
-      const value = ref('A')
+      const value = ref()
       const options: { label: string; value: string; disabled: boolean }[] = [
         { label: '옵션 A', value: 'A', disabled: false },
-        { label: '옵션 B', value: 'B', disabled: true },
+        { label: '옵션 B', value: 'B', disabled: false },
         { label: '옵션 C', value: 'C', disabled: false },
       ]
 
