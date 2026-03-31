@@ -10,9 +10,9 @@ html {
 }
 
 body {
-	line-height: var(--lh-base);
 	font-family: var(--font-family);
 	font-size: var(--font-size-base);
+	line-height: var(--lh-base);
 	color: var(--color-black);
 	letter-spacing: -0.05rem;
 }
@@ -68,8 +68,8 @@ small,
 }
 
 .label {
-	margin-bottom: var(--spacing-4);
 	display: block;
+	margin-bottom: var(--spacing-4);
 	font-size: var(--font-size-small);
 	font-weight: var(--font-weight-medium);
 }
