@@ -15,5 +15,10 @@ const config: StorybookConfig = {
   //   defaultName: 'Documentation',
   //   docsMode: true,
   // },
+
+  viteFinal: async (config) => {
+    config.base = '/playground/storybook/';
+    return config;
+  },
 }
 export default config
