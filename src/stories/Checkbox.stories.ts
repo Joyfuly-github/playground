@@ -49,28 +49,27 @@ export const Default: Story = {
 }
 
 export const CheckboxGroup: Story = {
-  args: {
-    vertical: true,
-  },
-  render: (args) => ({
+  render: () => ({
     components: { Checkbox, Fieldset, FieldGroup },
 
     setup() {
-      const value = ref(false)
-      const options: { label: string; value: string; disabled: boolean }[] = [
-        { label: '옵션 A', value: 'A', disabled: false },
-        { label: '옵션 B', value: 'B', disabled: true },
-        { label: '옵션 C', value: 'C', disabled: false },
+      const selectedValue = ref([])
+      const options: { label: string; value: string; name: string; disabled: boolean }[] = [
+        { label: '옵션 A', value: 'A', name: 'options', disabled: false },
+        { label: '옵션 B', value: 'B', name: 'options', disabled: true },
+        { label: '옵션 D', value: 'C', name: 'options', disabled: false },
       ]
 
-      return { args, value, options }
+      return { selectedValue, options }
     },
     template: `
-		<Fieldset legend="Checkbox Group" description="Select one of the options below.">
-			<FieldGroup  v-bind="args">
-				<Checkbox v-for="option in options" name="radio-group" :key="option.value" v-model="value" :label="option.label" :value="option.value" :disabled="option.disabled" />				
-			</FieldGroup>
-		 </Fieldset>
-		`,
+      <Fieldset legend="Checkbox Group" description="Select one of the options below.">
+        <FieldGroup vertical>
+          <Checkbox v-for="option in options" :key="option.value" v-model="selectedValue" :name="option.name" :id="option.value" :label="option.label" :value="option.value" :disabled="option.disabled" />
+        </FieldGroup>
+      </Fieldset>
+
+  {{ selectedValue }}
+    `,
   }),
 }

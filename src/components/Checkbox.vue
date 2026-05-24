@@ -1,10 +1,10 @@
 `
-<!-- 
-check 된 값
+<!--
+05/22 check 된 값
 boolean에서 value로 바꿔야할듯
 -->
 <template>
-  <label class="input-checkbox" :class="checkboxClass">
+  <label class="input-checkbox" :class="checkboxClass" :for="id">
     <input
       type="checkbox"
       v-model="checkValue"
@@ -27,7 +27,7 @@ boolean에서 value로 바꿔야할듯
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    modelValue: boolean
+    modelValue: string
     id?: string
     name?: string
     disabled?: boolean
@@ -43,12 +43,12 @@ const props = withDefaults(
 )
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void
+  (e: 'update:modelValue', value: string): void
 }>()
 
 const checkValue = computed({
   get: () => props.modelValue,
-  set: (val: boolean) => {
+  set: (val: string) => {
     if (props.readonly) {
       console.log(props.readonly)
       return false

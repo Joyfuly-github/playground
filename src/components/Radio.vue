@@ -1,11 +1,10 @@
-<!-- 
+<!--
 check 된 값
 boolean에서 value로 바꿔야할듯
 -->
 <template>
   <label class="input-radio" :class="radioClass">
     <input type="radio" v-model="radioValue" :id="id" :name="name" :disabled="disabled" />
-    <!-- @click.stop="readonly && $event.preventDefault()" -->
     <span class="radio"></span>
 
     <div class="inner-radio">

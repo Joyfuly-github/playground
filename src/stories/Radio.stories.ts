@@ -1,3 +1,4 @@
+// radio 두번 클릭해야 클릭 되는 이슈 처리
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import Radio from '@/components/Radio.vue'
 import Fieldset from '@/components/Fieldset.vue'
@@ -43,7 +44,7 @@ export const Default: Story = {
       return { args, value }
     },
     template: `
-      <Radio v-model="value" v-bind="args" />	
+      <Radio v-model="value" v-bind="args" />
     `,
   }),
 }
@@ -68,7 +69,7 @@ export const RadioGroup: Story = {
     template: `
 		<Fieldset legend="Radio Group" description="Select one of the options below.">
       <FieldGroup v-bind="args">
-				<Radio v-for="option in options" name="radio-group" :key="option.value" v-model="value" :label="option.label" :value="option.value" :disabled="option.disabled" />				
+				<Radio v-for="option in options" name="radio-group" :key="option.value" v-model="value" :label="option.label" :value="option.value" :disabled="option.disabled" />
 			</FieldGroup>
 		 </Fieldset>
     `,
