@@ -51,7 +51,7 @@ export const Default: Story = {
 
 export const RadioGroup: Story = {
   args: {
-    vertical: true,
+    // vertical: true,
   },
   render: (args) => ({
     components: { Radio, Fieldset, FieldGroup },
