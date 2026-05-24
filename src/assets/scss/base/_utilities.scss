@@ -65,7 +65,7 @@ $fontWeight: (
 
 @each $name, $value in $fontWeight {
 	.#{$name} {
-		font-weight: $value;
+		font-weight: $value !important;
 	}
 }
 

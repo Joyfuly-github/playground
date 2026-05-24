@@ -1,3 +1,6 @@
+<!--
+  alery → modal alert 으로 교체
+-->
 <template>
   <div class="w-full">
     <template v-for="(group, title) in groupTokens" :key="title">
@@ -5,10 +8,10 @@
 
       <ul class="list-preview">
         <li v-for="(value, name) in group" :key="name">
-          <div class="box" :class="`bg-${name.replace('--color-', '')}`"></div>
+          <div class="box" :class="`bg-${name}`"></div>
 
           <div class="info">
-            <p class="h5 mb-0">
+            <p class="font-h5 mb-0">
               {{ name }}
             </p>
             <p class="color-secondary-900">{{ value }}</p>
@@ -16,22 +19,22 @@
 
           <div class="code">
             <p class="small">
-              <button>
+              <Button variant="link" size="sm" class="font-normal" @click="copyText(`bg-${name}`)">
                 bg-{{ name }}
                 <Icon :type="'Copy'" />
-              </button>
+              </Button>
             </p>
             <p class="small">
-              <button>
+              <Button variant="link" size="sm" class="font-normal" @click="copyText(`text-${name}`)">
                 text-{{ name }}
                 <Icon :type="'Copy'" />
-              </button>
+              </Button>
             </p>
             <p class="small">
-              <button>
+              <Button variant="link" size="sm" class="font-normal" @click="copyText(`border-${name}`) ">
                 border-{{ name }}
                 <Icon :type="'Copy'" />
-              </button>
+              </Button>
             </p>
           </div>
         </li>
@@ -62,6 +65,12 @@ function titleTokens(tokens: Record<string, string>) {
 
   return groups
 }
+
+
+function copyText(text: string) {
+  navigator.clipboard.writeText(text);
+  alert(`Copied: ${text}`);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -83,6 +92,7 @@ h3 {
     align-items: center;
     gap: var(--spacing-16);
     flex-basis: 30%;
+    flex-wrap:wrap;
 
     .box {
       width: 6rem;
@@ -96,7 +106,7 @@ h3 {
     }
 
     .code {
-      text-align: right;
+      width:100%;
       > *:not(:first-child) {
         margin-top: var(--spacing-4);
       }
